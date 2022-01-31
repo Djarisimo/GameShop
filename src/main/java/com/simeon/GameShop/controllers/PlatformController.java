@@ -44,8 +44,7 @@ public class PlatformController {
 	public String editPlatform(@PathParam("id") int id, Platform platform) {
 		
 		platformService.save(platform);
-		return "redirect:/platforms";
-		
+		return "redirect:/platforms";		
 	}
 	
 	@DeleteMapping("/platforms/{id}")
