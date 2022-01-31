@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="shortcut icon" href="img/gameshop.png">
+
+  <title>Game Shop</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- bootstrap theme -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+  <!--external css-->
+  <!-- font icon -->
+  <link href="css/elegant-icons-style.css" rel="stylesheet" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- full calendar css-->
+  <link href="assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
+  <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" />
+  <!-- easy pie chart-->
+  <link href="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen" />
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+  <link href="css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="css/fullcalendar.css">
+  <link href="css/widgets.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style-responsive.css" rel="stylesheet" />
+  <link href="css/xcharts.min.css" rel=" stylesheet">
+  <link href="css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <!-- container section start -->
+  <section id="container" class="">
+
+
+    <header class="header dark-bg">
+      <div class="toggle-nav">
+        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+      </div>
+
+      <!--logo start-->
+      <a th:href="@{/index}" class="logo" color="#05630a">Game <span color= "#ff4444">Shop</span></a>
+      <!--logo end-->
+
+      <div class="top-nav notification-row">
+          <a th:href="@{/cart}" class="btn btn-info btn-lg"><i class="fa fa-shopping-cart"></i> Shopping Cart</a>
+       <!-- notificatoin dropdown start-->
+        <ul class="nav pull-right top-menu">
+
+          <!-- user login dropdown start-->
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="username" th:text="${#authentication.getPrincipal().getUsername()}">Guest</span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li>
+                <a th:href="@{/logout}"><i class="fa fa-sign-out"></i> Log Out</a>
+              </li>
+            </ul>
+          </li>
+          <!-- user login dropdown end -->
+        </ul>
+         <!-- notificatoin dropdown end-->
+      </div>
+  
+    </header>
+    <!--header end-->
+
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+          <li class="active">
+            <a class="" th:href="@{/index}">
+                          <i class="fa fa-github-alt"></i>
+                          <span>Dashboard</span>
+                      </a>
+          </li>
+          <li>
+            <a class="" th:href="@{/games}">
+                          <i class="fa fa-gamepad"></i>
+                          <span>Games</span>
+                      </a>
+          </li>
+          <li>
+            <a class="" th:href="@{/studios}">
+                          <i class="fa fa-users"></i>
+                          <span>Studios</span>
+
+                      </a>
+          </li>
+          <li>
+            <a class="" th:href="@{/genres}">
+                          <i class="fa fa-book"></i>
+                          <span>Genres</span>
+
+                      </a>
+          </li>
+           <li>
+            <a class="" th:href="@{/platforms}">
+                          <i class="fa fa-steam"></i>
+                          <span>Platforms</span>
+
+                      </a>
+          </li>
+                  
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+
+    <!--main content start-->
+    <section id="main-content">
+      <section class="wrapper">
+        <!--overview start-->
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-tablet"></i> Dashboard</h3>
+            <ol class="breadcrumb">
+              <li><i class="fa fa-github-alt"></i><a href="index">Home</a></li>
+              <li><i class="fa fa-tablet"></i>Dashboard</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="container">
+    <h5 class="card-title">Top Selling <span>| Today</span></h5>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid7">
+                <div class="product-image7">
+                    <a href="https://avatarfiles.alphacoders.com/176/176886.jpg">
+                        <img class="pic-1" src="https://avatarfiles.alphacoders.com/176/176886.jpg">
+                        <img class="pic-2" src="https://avatarfiles.alphacoders.com/126/126863.jpg">
+                    </a>
+                    <ul class="social">                      
+                        <li><a href="games" class="fa fa-shopping-cart"></a></li>
+                    </ul>
+                    <span class="product-new-label">New</span>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="games">God of War</a></h3>
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                    </ul>
+                    <div class="price"><sup>$</sup>79.<sup>99</sup>
+                        <span class="price">$119.<sup>99</sup></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid7">
+                <div class="product-image7">
+                    <a href="https://img.g2a.com/1080x1080/1x1x0/red-dead-redemption-2-rockstar-key-global/5da85be37e696c2b755a1612">
+                        <img class="pic-1" src="https://img.g2a.com/1080x1080/1x1x0/red-dead-redemption-2-rockstar-key-global/5da85be37e696c2b755a1612">
+                        <img class="pic-2" src="https://media.cntraveler.com/photos/5ea2ebe0da75960008ab1706/1:1/w_1080,h_1080,c_limit/RedDeadRedemption2-RockstarGames2.jpg">
+                    </a>
+                    <ul class="social">
+                        <li><a href="games" class="fa fa-shopping-cart"></a></li>
+                    </ul>
+                     <span class="product-onlytoday-label">Only Today</span>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="games">Red Dead Redemption 2</a></h3>
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                    </ul>
+                    <div class="price"><sup>$</sup>69.<sup>99</sup></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid7">
+                <div class="product-image7">
+                    <a href="https://image.api.playstation.com/vulcan/ap/rnd/202101/0812/FkzwjnJknkrFlozkTdeQBMub.png">
+                        <img class="pic-1" src="https://image.api.playstation.com/vulcan/ap/rnd/202101/0812/FkzwjnJknkrFlozkTdeQBMub.png">
+                        <img class="pic-2" src="https://assets2.rockpapershotgun.com/resident-evil-village-lady-dimetrscu-castle.jpg/BROK/thumbnail/1200x1200/quality/100/resident-evil-village-lady-dimetrscu-castle.jpg">
+                    </a>
+                    <ul class="social">
+                        <li><a href="games" class="fa fa-shopping-cart"></a></li>
+                    </ul>
+                    <span class="product-gameoftheyear-label">Game Of The Year</span>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="games">Resident Evil: Village</a></h3>
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                    </ul>
+                    <div class="price"><sup>$</sup>99.<sup>99</sup>
+                        <span>$119.<sup>99</sup></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid7">
+                <div class="product-image7">
+                    <a href="https://avatarfiles.alphacoders.com/245/245391.jpg">
+                        <img class="pic-1" src="https://avatarfiles.alphacoders.com/245/245391.jpg">
+                        <img class="pic-2" src="https://cdnb.artstation.com/p/assets/covers/images/028/946/023/large/xgntr-illustrator-xgntr-illustrator-far-cry-6-alternative-poster-by-xgntr.jpg?1595994176">
+                    </a>
+                    <ul class="social">
+                        <li><a href="games" class="fa fa-shopping-cart"></a></li>
+                    </ul>
+                    <span class="product-topselling-label">Top Selling</span>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="games">Far Cry 6</a></h3>
+                    <ul class="rating">
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                        <li class="fa fa-star"></li>
+                    </ul>                               
+                    <div class="price"><sup>$</sup>99.<sup>99</sup>
+                        <span>$149.<sup>99</sup></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <hr> 
+        <br>
+          <div class="row">
+              <div class="col-lg-12 col-md-12">
+
+                  <div class="panel panel-default">
+                      <div class="panel-heading">
+                          <h2><i class="fa fa-trophy"></i><strong> Game of the year</strong></h2>
+                      </div>
+                      <div>
+                          <div style="background-image: url('img/villageindex.jpg'); background-size:100%; height:960px"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        
+
+              <!-- Top Selling -->
+<!--            <div class="col-12">
+              <div class="card top-selling">     
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
+                 
+
+                  <table class="table table-hover table-advance table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Sold</th>
+                        <th scope="col">Platform</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"><a th:href="@{'/img/village.jpg'}"><img src="img/village.jpg" alt=""  width="40" height="40"></a></th>
+                        <td><a href="games" class="text-center">Resident Evil: Village</a></td>
+                        <td>$64</td>
+                        <td><b>124</b></td>
+                        <td>PC</td>
+                        <td><span class="label label-success label-rounded">NEW</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a th:href="@{'/img/vanguard.jpg'}"><img src="img/vanguard.jpg" alt="" width="40" height="40"></a></th>
+                        <td><a href="games" class="text-primary fw-bold">Call of Duty: Vanguard</a></td>
+                        <td>$46</td>
+                        <td><b>98</b></td>
+                        <td>PS4</td>
+                        <td><span class="status green" role="alert">NEW</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a th:href="@{'/img/farcry6.jpg'}"><img src="img/farcry6.jpg" alt="" width="40" height="40"></a></th>
+                        <td><a href="games" class="text-primary fw-bold">Far Cry 6</a></td>
+                        <td>$59</td>
+                        <td><b>74</b></td>
+                        <td>PC</td>
+                        <td><span class="status pink" role="alert">NEW</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a th:href="@{'/img/godofwar.jpg'}"><img src="img/godofwar.jpg" alt="" width="40" height="40"></a></th>
+                        <td><a href="games" class="text-primary fw-bold">God of War</a></td>
+                        <td>$32</td>
+                        <td><span class="font-medium">$24</span></td>
+                        <td>PC</td>
+                        <td><span class="status orange" role="alert">new</span></td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a th:href="@{'/img/rdr2.jpg'}"><img src="img/rdr2.jpg" alt="" width="40" height="40"></a></th>
+                        <td><a href="games" class="text-primary fw-bold">Red Dead Redemption 2</a></td>
+                        <td>$79</td>
+                        <td><b>41</b></td>
+                        <td>PC</td>
+                        <td><span class="label label-danger label-rounded">TBA</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div> End Top Selling -->
+            
+
+<hr>
+
+      </section>
+      
+    </section>
+    <!--main content end-->
+  </section>
+  <!-- container section start -->
+
+  <!-- javascripts -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui-1.10.4.min.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.min.js"></script>
+  <!-- bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <!-- nice scroll -->
+  <script src="js/jquery.scrollTo.min.js"></script>
+  <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+  <!-- charts scripts -->
+  <script src="assets/jquery-knob/js/jquery.knob.js"></script>
+  <script src="js/jquery.sparkline.js" type="text/javascript"></script>
+  <script src="assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <!-- jQuery full calendar -->
+  <<script src="js/fullcalendar.min.js"></script>
+    <!-- Full Google Calendar - Calendar -->
+    <script src="assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="js/calendar-custom.js"></script>
+    <script src="js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="js/jquery.customSelect.min.js"></script>
+    <script src="assets/chart-master/Chart.js"></script>
+
+    <!--custome script for all page-->
+    <script src="js/scripts.js"></script>
+    <!-- custom script for this page-->
+    <script src="js/sparkline-chart.js"></script>
+    <script src="js/easy-pie-chart.js"></script>
+    <script src="js/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="js/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="js/xcharts.min.js"></script>
+    <script src="js/jquery.autosize.min.js"></script>
+    <script src="js/jquery.placeholder.min.js"></script>
+    <script src="js/gdp-data.js"></script>
+    <script src="js/morris.min.js"></script>
+    <script src="js/sparklines.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+<!--    <script>
+      //knob
+      $(function() {
+        $(".knob").knob({
+          'draw': function() {
+            $(this.i).val(this.cv + '%')
+          }
+        })
+      });
+
+      //carousel
+      $(document).ready(function() {
+        $("#owl-slider").owlCarousel({
+          navigation: true,
+          slideSpeed: 300,
+          paginationSpeed: 400,
+          singleItem: true
+
+        });
+      });
+
+      //custom select box
+
+      $(function() {
+        $('select.styled').customSelect();
+      });
+
+      /* ---------- Map ---------- */
+      $(function() {
+        $('#map').vectorMap({
+          map: 'world_mill_en',
+          series: {
+            regions: [{
+              values: gdpData,
+              scale: ['#000', '#000'],
+              normalizeFunction: 'polynomial'
+            }]
+          },
+          backgroundColor: '#eef3f7',
+          onLabelShow: function(e, el, code) {
+            el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+          }
+        });
+      });
+    </script>-->
+
+</body>
+
+</html>
