@@ -61,19 +61,18 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 //		return NoOpPasswordEncoder.getInstance();
 //	}
 	
-	@Autowired
-	private UserDetailsService userDetailsService;
-
-	@Bean
-	public AuthenticationProvider authenticationProvider() {
-		
-		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-		
-		provider.setUserDetailsService(userDetailsService);
-		
-		provider.setPasswordEncoder(passwordEncoder());
-		
-		return provider;
-	}
-                  
+//	@Autowired
+//	private UserDetailsService userDetailsService;
+//
+//	@Bean
+//	public AuthenticationProvider authenticationProvider() {
+//		
+//		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+//		
+//		provider.setUserDetailsService(userDetailsService);
+//		
+//		provider.setPasswordEncoder(passwordEncoder());
+//		
+//		return provider;
+//	}               
 }
