@@ -26,15 +26,15 @@ public class CartService {
 	}
                   
 	// Save genres
-	public void save(Game game) {
-		Optional<Cart> cart = cartRepository.findByGameId(game.getId());
-		if(cart.isPresent()) {
-			cart.setQuantity(cart.getQuantity()++);
-			cartRepository.save(cart);
-		} else {
-			cartRepository.save(new Cart(game, 1));
-		}
-	}
+//	public void save(Game game) {
+//		Optional<Cart> cart = cartRepository.findByGameId(game.getId());
+//		if(cart.isPresent()) {
+//			cart.setQuantity(cart.getQuantity()++);
+//			cartRepository.save(cart);
+//		} else {
+//			cartRepository.save(new Cart(game, 1));
+//		}
+//	}
 		
 	// Delete genres
 	public void deleteFromCart(int id) {
