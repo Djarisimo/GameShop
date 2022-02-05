@@ -5,10 +5,8 @@ import com.simeon.GameShop.services.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
@@ -34,13 +32,13 @@ public class PlatformController {
         return "redirect:/platforms";
     }
 
-    @PutMapping("platforms/{id}")
+    @PostMapping("platforms/{id}")
     public String updatePlatform(@PathParam("id") int id, Platform platform) {
         platformService.updatePlatform(id, platform);
         return "redirect:/platforms";
     }
 
-    @DeleteMapping("platforms/{id}")
+    @PostMapping("platforms/{id}/delete")
     public String deletePlatform(@PathParam("id") int id) {
         platformService.deletePlatform(id);
         return "redirect:/platforms";

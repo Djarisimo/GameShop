@@ -8,10 +8,8 @@ import com.simeon.GameShop.services.StudioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.websocket.server.PathParam;
 
@@ -54,14 +52,14 @@ public class GameController {
         return "redirect:/games";
     }
 
-    @PutMapping("games/{id}")
+    @PostMapping("games/{id}")
     public String updateGame(@PathParam("id") int id, Game game) {
         gameService.updateGame(id, game);
         return "redirect:/games";
 
     }
 
-    @DeleteMapping("games/{id}")
+    @PostMapping("games/{id}/delete")
     public String deleteGame(@PathParam("id") int id) {
         gameService.deleteGame(id);
         return "redirect:/games";
