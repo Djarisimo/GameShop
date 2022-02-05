@@ -147,8 +147,12 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
                                 <td  th:text="${cart.game.price + ' ' + '$'}"></td> 
                                 <td  th:text="${cart.game.platform.name}"></td>     
                                 <td  th:text="${cart.quantity}"></td>  
-                        <form th:action="@{/cart/games/${cart.id}}" method="delete"> 
-                            <td><button class="btn btn-danger btn-sm btn-delete" onclick="return confirm('Are you sure you want to remove this item from cart?');"> <i class="fa fa-times"></i></button></td>
+                        <form th:action="@{/cart-items/games/${cart.id}}" method="delete">
+                            <td>
+                                <button class="btn btn-danger btn-sm btn-delete"
+                                        onclick="return confirm('Are you sure you want to remove this item from cart?');">
+                                    <i class="fa fa-times"></i></button>
+                            </td>
                         </form>
                             </tr>
 <!--                            <tr th:each="cart:${shoppingCart}">

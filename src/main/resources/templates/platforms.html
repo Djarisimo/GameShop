@@ -151,16 +151,20 @@
         							<h5 class="modal-title" id="editModalLabel">Edit platform: </h5>
       							</div>
       							<div class="modal-body">
-       							 <form th:action="@{/platforms/{id}}" method="post">
-         							 <div class="form-group">
-							            <input id="id" name="id" type="hidden" class="form-control" th:value="${platform.id}"/>
-							            <label for="platformName" class="col-form-label">Platform: <span class="text-danger">*</span></label>
-							            <input id="platformName" name="name" type="text" class="form-control" placeholder="Edit platform" th:value="${platform.name}" autocomplete="off" required/>
-							          </div>
-							          <div class="form-group">
-								        <button type="submit" class="btn btn-primary">Save</button>
-							          </div>
-        						</form>
+       							 <form th:action="@{/platforms/${platform.id}}" method="post">
+                                     <div class="form-group">
+                                         <input id="id" name="id" type="hidden" class="form-control"
+                                                th:value="${platform.id}"/>
+                                         <label for="platformName" class="col-form-label">Platform: <span
+                                                 class="text-danger">*</span></label>
+                                         <input id="platformName" name="name" type="text" class="form-control"
+                                                placeholder="Edit platform" th:value="${platform.name}"
+                                                autocomplete="off" required/>
+                                     </div>
+                                     <div class="form-group">
+                                         <button type="submit" class="btn btn-primary">Save</button>
+                                     </div>
+                                 </form>
       							</div>
       							<div class="modal-footer">
         							<button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
@@ -168,7 +172,8 @@
       						</div>
       					  </div>
 						</div> &nbsp;
-						<a class="btn btn-danger" th:href="@{/platforms/{id}/${platform.id}}" onclick="return confirm('Are you sure you want to delete this platform?');">Delete</a>
+                       <a class="btn btn-danger" th:href="@{/platforms/${platform.id}}"
+                          onclick="return confirm('Are you sure you want to delete this platform?');">Delete</a>
                     </td>
                   </tr>
                  </tbody>

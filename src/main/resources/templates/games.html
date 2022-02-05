@@ -172,17 +172,25 @@
                                                     <h5 class="modal-title" id="editModalLabel">Edit game</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form th:action="@{/games/{id}}" method="post">
+                                                    <form th:action="@{/games/${game.id}" method="post">
                                                         <div class="form-group">
-                                                            <input id="id" name="id" type="hidden" class="form-control" th:value="${game.id}"/>
+                                                            <input id="id" name="id" type="hidden" class="form-control"
+                                                                   th:value="${game.id}"/>
 
-                                                            <label for="gamePicture" class="col-form-label">Game Picture URL: <span class="text-danger">*</span></label>
-                                                            <input id="gamePicture" name="picture" type="url" class="form-control" placeholder="Edit game image" th:value="${game.picture}" required/> 
+                                                            <label for="gamePicture" class="col-form-label">Game Picture
+                                                                URL: <span class="text-danger">*</span></label>
+                                                            <input id="gamePicture" name="picture" type="url"
+                                                                   class="form-control" placeholder="Edit game image"
+                                                                   th:value="${game.picture}" required/>
 
-                                                            <label for="gameName" class="col-form-label">Game Title: <span class="text-danger">*</span></label>
-                                                            <input id="gameName" name="name" type="text" class="form-control" placeholder="Edit game title" th:value="${game.name}" autocomplete="off" required/>                                                                                                                                  
+                                                            <label for="gameName" class="col-form-label">Game Title:
+                                                                <span class="text-danger">*</span></label>
+                                                            <input id="gameName" name="name" type="text"
+                                                                   class="form-control" placeholder="Edit game title"
+                                                                   th:value="${game.name}" autocomplete="off" required/>
 
-                                                            <label for="gameStudio" class="col-sm-4 col-form-label">Game Studio: </label>
+                                                            <label for="gameStudio" class="col-sm-4 col-form-label">Game
+                                                                Studio: </label>
                                                             <select class="form-control" id="gameStudio" name="gamestudioid">
                                                                 <option th:each="studio : ${studios}"
                                                                         th:selected="${game.gamestudioid} == ${studio.id}"
@@ -238,17 +246,17 @@
                                                     </button>-->
                                                 </div>
                                                 <div class="modal-body">
-                                                  <form th:action="@{/cart/games}" method="post">  
-                                                    <table class="table table-image">
-                                                        <thead>
+                                                    <form th:action="@{/cart-items/games}" method="post">
+                                                        <table class="table table-image">
+                                                            <thead>
                                                             <tr>
                                                                 <th>Image</th>
                                                                 <th>Game Title</th>
                                                                 <th>Price</th>
                                                                 <th>Platform</th>
                                                             </tr>
-                                                        </thead>
-                                                        <tbody>
+                                                            </thead>
+                                                            <tbody>
                                                             <tr>
                                                                 <td><img th:src="@{${game.picture}}" height=150 width=150 class="img-fluid img-thumbnail"></td>
                                                                 <td th:text="${game.name}"></td>
