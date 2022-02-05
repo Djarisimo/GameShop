@@ -8,6 +8,6 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
-public class Genre extends CommonObject {
-    private String name;
+public class Studio extends CommonObject {
+     private String name;
 }

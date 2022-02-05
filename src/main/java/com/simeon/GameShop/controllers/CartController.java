@@ -1,43 +1,39 @@
 package com.simeon.GameShop.controllers;
 
-import com.simeon.GameShop.models.Cart;
 import com.simeon.GameShop.models.Game;
-import com.simeon.GameShop.services.CartService;
-import javax.websocket.server.PathParam;
+import com.simeon.GameShop.services.CartItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import org.springframework.web.bind.annotation.PostMapping;
 
-
+import javax.websocket.server.PathParam;
 
 @Controller
 public class CartController {
-    
+
     @Autowired
-    private CartService cartService; 
-    
-    @GetMapping("/cart")
-    public String getCart(Model model) {
-      
-        model.addAttribute("shoppingCart", cartService.getCart());
+    private CartItemService cartItemService;
+
+    @GetMapping("/cart-items")
+    public String getAllCartItems(Model model) {
+
+        model.addAttribute("shoppingCart", cartItemService.getAllCartItems());
 
         return "shoppingCart";
     }
 
-    @PostMapping("/cart/games")
-    public String addToCart(Game game) {
-        cartService.save(game);
+    @PostMapping("/cart-items/games")
+    public String addGameToCartItems(Game game) {
+        cartItemService.addGameToCart(game);
         return "redirect:/shoppingCart";
     }
-    
-    @DeleteMapping("/cart/games/{id}")
-    public String deleteFromCart(@PathParam("id") int id) {
 
-        cartService.deleteFromCart(id);
+    @DeleteMapping("/cart-items/games/{gameId}")
+    public String removeGameFromCartItems(@PathParam("gameId") int gameId) {
+        cartItemService.removeGameFromCart(gameId);
         return "redirect:/shoppingCart";
     }
 }

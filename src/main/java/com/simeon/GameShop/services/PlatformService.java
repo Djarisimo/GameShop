@@ -1,30 +1,36 @@
 package com.simeon.GameShop.services;
 
-import java.util.List;
-
+import com.simeon.GameShop.models.Platform;
+import com.simeon.GameShop.repositories.PlatformRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.simeon.GameShop.models.Platform;
-import com.simeon.GameShop.repositories.PlatformRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlatformService {
 
 	@Autowired
 	private PlatformRepository platformRepository;
-	
-	// Return all platforms
-	public List<Platform> getPlatform(){
+
+	public List<Platform> getAllPlatforms() {
 		return platformRepository.findAll();
 	}
-	
-	// Save platforms
-	public void save(Platform platform) {
+
+	public void addPlatform(Platform platform) {
 		platformRepository.save(platform);
 	}
-		
-	// Delete platforms
+
+	public void updatePlatform(int id, Platform platform) {
+		Optional<Platform> optionalPlatform = platformRepository.findById(id);
+		if (optionalPlatform.isPresent() && platform.getName() != null) {
+			Platform foundPlatform = optionalPlatform.get();
+			foundPlatform.setName(platform.getName());
+			platformRepository.save(foundPlatform);
+		}
+	}
+
 	public void deletePlatform(int id) {
 		platformRepository.deleteById(id);
 	}

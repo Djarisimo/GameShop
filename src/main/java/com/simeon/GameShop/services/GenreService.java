@@ -1,31 +1,27 @@
 package com.simeon.GameShop.services;
 
-import java.util.List;
-
+import com.simeon.GameShop.models.Genre;
+import com.simeon.GameShop.repositories.GenreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.simeon.GameShop.models.Genre;
-import com.simeon.GameShop.repositories.GenreRepository;
+import java.util.List;
 
 @Service
 public class GenreService {
 
-	@Autowired
-	private GenreRepository genreRepository;
-	
-	// Return all genres
-	public List<Genre> getGenre(){
-		return genreRepository.findAll();
-	}
-	
-	// Save genres
-	public void save(Genre genre) {
-		genreRepository.save(genre);
-	}
-		
-	// Delete genres
-	public void deleteGenre(int id) {
-		genreRepository.deleteById(id);
-	}
+    @Autowired
+    private GenreRepository genreRepository;
+
+    public List<Genre> getAllGenres() {
+        return genreRepository.findAll();
+    }
+
+    public void addGenre(Genre genre) {
+        genreRepository.save(genre);
+    }
+
+    public void deleteGenre(int id) {
+        genreRepository.deleteById(id);
+    }
 }
