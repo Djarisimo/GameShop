@@ -1,18 +1,13 @@
 package com.simeon.GameShop.models;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 @Entity
-@Data
-@EqualsAndHashCode(callSuper=false)
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-
+@Getter
+@Setter
 public class Genre extends CommonObject {
-    private String name;
+    public String name;
 }

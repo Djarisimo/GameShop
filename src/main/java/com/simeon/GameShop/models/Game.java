@@ -1,47 +1,37 @@
 package com.simeon.GameShop.models;
 
-import javax.persistence.Entity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
-@AllArgsConstructor
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-
 public class Game extends CommonObject {
-	
-        public String name;
-                 
-        public BigDecimal price;
 
-        public String picture;
-	
-	@ManyToOne
-	@JoinColumn(name="game_studio_id", insertable=false, updatable=false)
-	public GameStudio gameStudio;	
-	
-	@ManyToOne
-	@JoinColumn(name="genre_id", insertable=false, updatable=false)
-	public Genre genre;
-    
-        @OneToMany(fetch = FetchType.EAGER)
-	public List<Platform> platform = new ArrayList<>();
-          
+    public String name;
+
+    public BigDecimal price;
+
+    public String pictureUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "studio_id")
+    public Studio studio;
+
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
+    public Genre genre;
+
+    @OneToMany(mappedBy = "game", fetch = FetchType.EAGER)
+    public List<Platform> platforms = new ArrayList<>();
+
 }
