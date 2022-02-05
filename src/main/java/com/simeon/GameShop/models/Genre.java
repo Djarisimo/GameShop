@@ -9,5 +9,5 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 public class Genre extends CommonObject {
-    private String name;
+    public String name;
 }

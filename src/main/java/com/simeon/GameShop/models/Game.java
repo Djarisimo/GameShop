@@ -8,10 +8,12 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class Game extends CommonObject {
 
@@ -22,7 +24,7 @@ public class Game extends CommonObject {
     public String pictureUrl;
 
     @ManyToOne
-    @JoinColumn(name = "game_studio_id")
+    @JoinColumn(name = "studio_id")
     public Studio studio;
 
     @ManyToOne

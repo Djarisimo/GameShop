@@ -155,9 +155,9 @@
                         <tbody>
                             <tr th:each="game:${games}">
                                 <td  th:text="${game.id}"></td>
-                                <td><a th:href="@{${game.picture}}"> <img th:src="@{${game.picture}}" height=40 width=40> </a></td>
+                                <td><a th:href="@{${game.pictureUrl}}"> <img th:src="@{${game.pictureUrl}}" height=40 width=40> </a></td>
                                 <td  th:text="${game.name}"></td>
-                                <td  th:text="${game.gameStudio.name}"></td>
+                                <td  th:text="${game.studio.name}"></td>
                                 <td  th:text="${game.genre.name}"></td>
                                 <td  th:text="${game.platform.name}"></td>
                                 <td  th:text="${game.price + ' ' + '$'}"></td>
@@ -179,9 +179,9 @@
 
                                                             <label for="gamePicture" class="col-form-label">Game Picture
                                                                 URL: <span class="text-danger">*</span></label>
-                                                            <input id="gamePicture" name="picture" type="url"
+                                                            <input id="gamePicture" name="pictureUrl" type="url"
                                                                    class="form-control" placeholder="Edit game image"
-                                                                   th:value="${game.picture}" required/>
+                                                                   th:value="${game.pictureUrl}" required/>
 
                                                             <label for="gameName" class="col-form-label">Game Title:
                                                                 <span class="text-danger">*</span></label>
@@ -189,11 +189,11 @@
                                                                    class="form-control" placeholder="Edit game title"
                                                                    th:value="${game.name}" autocomplete="off" required/>
 
-                                                            <label for="gameStudio" class="col-sm-4 col-form-label">Game
+                                                            <label for="studio" class="col-sm-4 col-form-label">Game
                                                                 Studio: </label>
-                                                            <select class="form-control" id="gameStudio" name="gamestudioid">
+                                                            <select class="form-control" id="studio" name="studioid">
                                                                 <option th:each="studio : ${studios}"
-                                                                        th:selected="${game.gamestudioid} == ${studio.id}"
+                                                                        th:selected="${game.studio.id} == ${studio.id}"
                                                                         th:value="${studio.id}"
                                                                         th:text="${studio.name}">
                                                                 </option>
@@ -202,7 +202,7 @@
                                                             <label for="gameGenre" class="col-sm-4 col-form-label">Game Genre: </label>
                                                             <select class="form-control" id="gameGenre" name="genreid">
                                                                 <option th:each="genre:${genres}"
-                                                                        th:selected="${game.genreid} == ${genre.id}"
+                                                                        th:selected="${game.genreId} == ${genre.id}"
                                                                         th:value="${genre.id}"
                                                                         th:text="${genre.name}">
                                                                 </option>
@@ -211,7 +211,7 @@
                                                             <label for="gamePlatform" class="col-sm-4 col-form-label">Game Platform: </label>
                                                             <select class="form-control" id="gamePlatform" name="platformid">
                                                                 <option th:each="platform:${platforms}"
-                                                                        th:selected="${game.platformid} == ${platform.id}"
+                                                                        th:selected="${game.platformId} == ${platform.id}"
                                                                         th:value="${platform.id}"
                                                                         th:text="${platform.name}">
                                                                 </option>
@@ -270,7 +270,7 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr>
-                                                                <td><img th:src="@{${game.picture}}" height=150 width=150 class="img-fluid img-thumbnail"></td>
+                                                                <td><img th:src="@{${game.pictureUrl}}" height=150 width=150 class="img-fluid img-thumbnail"></td>
                                                                 <td th:text="${game.name}"></td>
                                                                 <td th:text="${game.price + '$'}"></td>
                                                                 <td th:text="${game.platform.name}"></td>
@@ -310,13 +310,13 @@
                             <div class="form-group">
 
                                 <label for="game-picture" class="col-form-label">Game Picture URL: <span class="text-danger">*</span></label>
-                                <input type="url" class="form-control" id="game-picture" name="picture" placeholder="Enter game image" required>
+                                <input type="url" class="form-control" id="game-picture" name="pictureUrl" placeholder="Enter game image" required>
 
                                 <label for="game-name" class="col-form-label">Game Title: <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="game-name" name="name" placeholder="Enter game title" autocomplete="off" required>
 
-                                <label for="gamestudioid" class="col-sm-4 col-form-label">Game Studio: </label>
-                                <select class="form-control" id="gamestudioid" name="gamestudioid">
+                                <label for="studioid" class="col-sm-4 col-form-label">Game Studio: </label>
+                                <select class="form-control" id="studioid" name="studioid">
                                     <option th:each="studio : ${studios}"
                                             th:value="${studio.id}"
                                             th:text="${studio.name}">

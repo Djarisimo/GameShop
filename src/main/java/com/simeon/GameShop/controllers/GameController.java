@@ -48,6 +48,7 @@ public class GameController {
 
     @PostMapping("games")
     public String addGame(Game game) {
+        System.out.println("game" + game);
         gameService.addGame(game);
         return "redirect:/games";
     }
