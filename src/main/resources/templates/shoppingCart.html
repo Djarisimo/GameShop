@@ -117,7 +117,7 @@
                     <table class="table table-hover table-advance">
                         <thead>
                             <tr>
-                                <th>ID</th>
+<!--                                <th>ID</th>-->
                                 <th>Image</th>
                                 <th>Game Title</th>
                                 <th>Price</th>
@@ -128,11 +128,11 @@
                         </thead>
                         <tbody>
                             <tr th:each="cart:${shoppingCart}">
-                            <td  th:text="${cart.game.id}"></td>
+<!--                            <td  th:text="${cart.game.id}"></td>-->
                                 <td><img th:src="@{${cart.game.pictureUrl}}" height=40 width=40> </a></td>
                                 <td  th:text="${cart.game.name}" ></td>                              
                                 <td  th:text="${cart.game.price + ' ' + '$'}"></td> 
-                                <td  th:text="${cart.game.platform.name}"></td>     
+                                <td  th:text="${cart.game.platformid.name}"></td>     
                                 <td  th:text="${cart.quantity}"></td>  
                         <form th:action="@{/cart-items/games/{id}/delete(id=${cart.id})}" method="POST">
                             <td>
