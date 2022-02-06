@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class StudioController {
@@ -42,8 +45,15 @@ public class StudioController {
 
     }
 
-    @PostMapping("studios/{id}/delete")
-    public String deleteStudio(@PathParam("id") int id) {
+//    @PostMapping("studios/{id}/delete")
+//    public String deleteStudio(@PathParam("id") int id) {
+//        studioService.deleteStudio(id);
+//        return "redirect:/studios";
+//    }
+    
+    
+	@RequestMapping(value = "/studios/delete", method = RequestMethod.GET)
+    public String deleteStudio(@RequestParam(name = "id") int id) {
         studioService.deleteStudio(id);
         return "redirect:/studios";
     }

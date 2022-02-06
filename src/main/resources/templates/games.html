@@ -39,7 +39,7 @@
 
 
                 <div class="top-nav notification-row">
-                    <a th:href="@{/cart}" class="btn btn-info btn-lg"><i class="fa fa-shopping-cart"></i> Shopping Cart</a>
+                    <a th:href="@{/cart-items}" class="btn btn-info btn-lg"><i class="fa fa-shopping-cart"></i> Shopping Cart</a>
                     <!-- notificatoin dropdown start-->
                     <ul class="nav pull-right top-menu">
 
@@ -172,7 +172,7 @@
                                                     <h5 class="modal-title" id="editModalLabel">Edit game</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form th:action="@{/games/{id}(id=${game.id})" method="POST">
+                                                    <form th:action="@{/games/edit}" method="post">
                                                         <div class="form-group">
                                                             <input id="id" name="id" type="hidden" class="form-control"
                                                                    th:value="${game.id}"/>
@@ -189,11 +189,10 @@
                                                                    class="form-control" placeholder="Edit game title"
                                                                    th:value="${game.name}" autocomplete="off" required/>
 
-                                                            <label for="studio" class="col-sm-4 col-form-label">Game
-                                                                Studio: </label>
-                                                            <select class="form-control" id="studio" name="studioid">
+                                                               <label for="gameStudio" class="col-sm-4 col-form-label">Game Studio: </label>
+                                                            <select class="form-control" id="gameStudio" name="studioid">
                                                                 <option th:each="studio : ${studios}"
-                                                                        th:selected="${game.studio.id} == ${studio.id}"
+                                                                        th:selected="${game.studioid} == ${studio.id}"
                                                                         th:value="${studio.id}"
                                                                         th:text="${studio.name}">
                                                                 </option>
@@ -202,7 +201,7 @@
                                                             <label for="gameGenre" class="col-sm-4 col-form-label">Game Genre: </label>
                                                             <select class="form-control" id="gameGenre" name="genreid">
                                                                 <option th:each="genre:${genres}"
-                                                                        th:selected="${game.genreId} == ${genre.id}"
+                                                                        th:selected="${game.genreid} == ${genre.id}"
                                                                         th:value="${genre.id}"
                                                                         th:text="${genre.name}">
                                                                 </option>
@@ -211,7 +210,7 @@
                                                             <label for="gamePlatform" class="col-sm-4 col-form-label">Game Platform: </label>
                                                             <select class="form-control" id="gamePlatform" name="platformid">
                                                                 <option th:each="platform:${platforms}"
-                                                                        th:selected="${game.platformId} == ${platform.id}"
+                                                                        th:selected="${game.platformid} == ${platform.id}"
                                                                         th:value="${platform.id}"
                                                                         th:text="${platform.name}">
                                                                 </option>
@@ -233,12 +232,13 @@
                                             </div>
                                         </div>
                                     </div> &nbsp;
-                                    <form th:action="@{/games/{id}/delete(id=${game.id})}" method="POST">
+<!--                                    <form th:action="@{/games/{id}/delete(id=${game.id})}" method="POST">
                                         <button class="btn btn-danger" type="submit"
                                                 onclick="return confirm('Are you sure you want to delete this game?');">
                                             Delete
                                         </button>
-                                    </form>
+                                    </form>-->
+                                        <a class="btn btn-danger" th:href="@{/games/delete/(id=${game.id})}" onclick="return confirm('Are you sure you want to delete this game?');">Delete</a>
                                     <!------------ Add to cart----------------- -->
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-success" data-toggle="modal"

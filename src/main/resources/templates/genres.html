@@ -38,7 +38,7 @@
 
 
       <div class="top-nav notification-row">
-          <a th:href="@{/cart}" class="btn btn-info btn-lg"><i class="fa fa-shopping-cart"></i> Shopping Cart</a>
+          <a th:href="@{/cart-items}" class="btn btn-info btn-lg"><i class="fa fa-shopping-cart"></i> Shopping Cart</a>
         <!-- notificatoin dropdown start-->
         <ul class="nav pull-right top-menu">
 
@@ -170,11 +170,12 @@
                             </div>
                           </div>
                         </div> &nbsp;
-                       <form th:action="@{/genres/{id}(id=${genre.id})}" method="post">
+<!--                       <form th:action="@{/genres/{id}(id=${genre.id})}" method="post">
                            <button type="submit" class="btn btn-danger"
                                    onclick="return confirm('Are you sure you want to delete this genre?');">Delete
                            </button>
-                       </form>
+                       </form>-->
+                        <a class="btn btn-danger" th:href="@{/genres/delete/(id=${genre.id})}" onclick="return confirm('Are you sure you want to delete this genre?');">Delete</a>
                    </td>
                   </tr>
                  </tbody>

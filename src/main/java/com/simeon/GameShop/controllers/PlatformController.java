@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PlatformController {
@@ -38,9 +41,15 @@ public class PlatformController {
         return "redirect:/platforms";
     }
 
-    @PostMapping("platforms/{id}/delete")
-    public String deletePlatform(@PathParam("id") int id) {
-        platformService.deletePlatform(id);
+//    @PostMapping("platforms/{id}/delete")
+//    public String deletePlatform(@PathParam("id") int id) {
+//        platformService.deletePlatform(id);
+//        return "redirect:/platforms";
+//    }
+    
+    @RequestMapping(value = "/platforms/delete", method = RequestMethod.GET)
+    public String deletePlatform(@RequestParam(name = "id") int id) {
+		platformService.deletePlatform(id);
         return "redirect:/platforms";
     }
 }

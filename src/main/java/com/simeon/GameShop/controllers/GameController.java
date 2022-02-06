@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.websocket.server.PathParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -48,21 +51,35 @@ public class GameController {
 
     @PostMapping("games")
     public String addGame(Game game) {
-        System.out.println("game" + game);
         gameService.addGame(game);
         return "redirect:/games";
     }
 
-    @PostMapping("games/{id}")
-    public String updateGame(@PathParam("id") int id, Game game) {
-        gameService.updateGame(id, game);
-        return "redirect:/games";
+//    @PostMapping("games/{id}")
+//    public String updateGame(@PathParam("id") int id, Game game) {
+//        gameService.updateGame(id, game);
+//        return "redirect:/games";
+//
+//    }
+    
+    @RequestMapping(value = "/games/edit", method = RequestMethod.POST)
+	public String editGame(Game game) {
+		
+		gameService.editGame(game);
+		return "redirect:/games";
+		
+	}
 
-    }
-
-    @PostMapping("games/{id}/delete")
-    public String deleteGame(@PathParam("id") int id) {
-        gameService.deleteGame(id);
-        return "redirect:/games";
-    }
+//    @PostMapping("games/{id}/delete")
+//    public String deleteGame(@PathParam("id") int id) {
+//        gameService.deleteGame(id);
+//        return "redirect:/games";
+//    }
+        
+        @RequestMapping(value = "/games/delete", method = RequestMethod.GET)
+        public String deleteGame(@RequestParam(name = "id") int id) {
+            
+		gameService.deleteGame(id);
+                return "redirect:/games";
+        } 
 }

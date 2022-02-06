@@ -10,9 +10,6 @@ import java.util.List;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, Integer> {
-    @Query(value = "SELECT * FROM Game g " +
-            "WHERE g.name LIKE %:keyword% " +
-            "OR g.price LIKE %:keyword% ",
-            nativeQuery = true)
+    @Query(value = "SELECT * FROM Game g WHERE g.name LIKE %:keyword% or g.price LIKE %:keyword%", nativeQuery = true)
     List<Game> findByNameOrPriceLike(@Param("keyword") String keyword);
 }

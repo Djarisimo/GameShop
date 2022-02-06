@@ -14,7 +14,7 @@ public class Platform extends CommonObject {
 
     public String name;
 
-    @ManyToOne
-    @JoinColumn(name = "game_id")
-    private Game game;
+//    @ManyToOne
+//    @JoinColumn(name = "game_id")
+//    private Game game;
 }

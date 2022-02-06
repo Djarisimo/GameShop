@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GenreController {
@@ -39,9 +42,15 @@ public class GenreController {
 
     }
 
-    @PostMapping("genres/{id}/delete")
-    public String deleteGenre(@PathParam("id") int id) {
-        genreService.deleteGenre(id);
+//    @PostMapping("genres/{id}/delete")
+//    public String deleteGenre(@PathParam("id") int id) {
+//        genreService.deleteGenre(id);
+//        return "redirect:/genres";
+//    }
+    
+    @RequestMapping(value = "/genres/delete", method = RequestMethod.GET)
+    public String deleteGenre(@RequestParam(name = "id") int id) {
+		genreService.deleteGenre(id);
         return "redirect:/genres";
     }
 }
