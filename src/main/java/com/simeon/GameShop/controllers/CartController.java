@@ -26,6 +26,7 @@ public class CartController {
 
     @PostMapping("/cart-items/games")
     public String addGameToCartItems(Game game) {
+        System.out.println("game" + game);
         cartItemService.addGameToCart(game);
         return "redirect:/shoppingCart";
     }
