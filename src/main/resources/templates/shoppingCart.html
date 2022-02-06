@@ -129,7 +129,7 @@
                         <tbody>
                             <tr th:each="cart:${shoppingCart}">
                             <td  th:text="${cart.game.id}"></td>
-                                <td><img th:src="@{${cart.game.picture}}" height=40 width=40> </a></td>
+                                <td><img th:src="@{${cart.game.pictureUrl}}" height=40 width=40> </a></td>
                                 <td  th:text="${cart.game.name}" ></td>                              
                                 <td  th:text="${cart.game.price + ' ' + '$'}"></td> 
                                 <td  th:text="${cart.game.platform.name}"></td>     

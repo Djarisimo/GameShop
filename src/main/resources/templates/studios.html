@@ -127,17 +127,18 @@
                     <br><br>
 
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Create studio</button>
-                    <table class="table table-hover table-advance">
+                    <br><br>
+                    <table class="table table-hover table-advance table-bordered">
                         <thead>
                             <tr>
-                                <th><i class="icon_id-2_alt"></i> ID</th>
+<!--                                <th><i class="icon_id-2_alt"></i> ID</th>-->
                                 <th><i class="fa fa-users"></i> Studio</th>
                                 <th><i class="fa fa-cogs"></i> Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="studio:${studios}">
-                                <td th:text="${studio.id}"></td>
+<!--                                <td th:text="${studio.id}"></td>-->
                                 <td th:text="${studio.name}"></td>
                                 <td>
                                     <div class="btn-group">

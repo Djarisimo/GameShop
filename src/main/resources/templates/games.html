@@ -133,7 +133,7 @@
                     <div class="form-center">
                         <form class="form-inline" th:action="@{/games}" method="get"> 
                             <div class="form-group mx-sm-3 mb-2">
-                                <input class="form-control" type="text" name="keyword" placeholder="Find by ID, Title & Price" size="30" autocomplete="off">  
+                                <input class="form-control" type="text" name="keyword" placeholder="Find by Title & Price" size="30" autocomplete="off">  
                             </div>
                             <button type="submit" class="btn btn-info">Filter</button> 
                         </form>
@@ -142,7 +142,7 @@
                     <table class="table table-hover table-advance table-bordered">
                         <thead>
                             <tr>
-                                <th><i class="icon_id-2_alt"></i> ID</th>
+<!--                                <th><i class="icon_id-2_alt"></i> ID</th>-->
                                 <th><i class="fa fa-photo"></i> Image</th>
                                 <th><i class="fa fa-bookmark"></i> Game Title</th>
                                 <th><i class="fa fa-users"></i> Studio</th>
@@ -154,7 +154,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="game:${games}">
-                                <td  th:text="${game.id}"></td>
+<!--                                <td  th:text="${game.id}"></td>-->
                                 <td><a th:href="@{${game.pictureUrl}}"> <img th:src="@{${game.pictureUrl}}" height=40 width=40> </a></td>
                                 <td  th:text="${game.name}"></td>
                                 <td  th:text="${game.studio.name}"></td>

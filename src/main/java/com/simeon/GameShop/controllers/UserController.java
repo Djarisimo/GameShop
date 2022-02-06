@@ -18,10 +18,10 @@ public class UserController {
 	private UserService userService;    
 
 	@PostMapping(value="users/addNew")
-	public RedirectView addNew(@Valid User user, BindingResult result, RedirectAttributes redir) {
+	public RedirectView addNew(User user, RedirectAttributes redir) {
 		userService.addUser(user);
 		RedirectView  redirectView= new RedirectView("/login",true);
-	        redir.addFlashAttribute("message", "You successfully registered! You can now login");
+	        redir.addFlashAttribute("message", "You successfully registered! You can now login!");
 	    return redirectView;				
 	}
 }

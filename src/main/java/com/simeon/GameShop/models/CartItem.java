@@ -18,6 +18,6 @@ public class CartItem extends CommonObject {
     private int quantity;
 
     @ManyToOne
-    @JoinColumn(name = "game_id")
-    private Game game;
+    @JoinColumn(name = "game_id", insertable=false, updatable=false)
+    public Game game;
 }
