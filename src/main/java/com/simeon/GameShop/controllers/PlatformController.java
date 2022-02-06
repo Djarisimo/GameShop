@@ -36,7 +36,7 @@ public class PlatformController {
     }
 
     @PostMapping("platforms/{id}")
-    public String updatePlatform(@PathParam("id") int id, Platform platform) {
+    public String editPlatform(@PathParam("id") int id, Platform platform) {
         platformService.updatePlatform(id, platform);
         return "redirect:/platforms";
     }

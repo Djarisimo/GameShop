@@ -38,7 +38,7 @@ public class StudioController {
     }
 
     @PostMapping("studios/{id}")
-    public String updateStudio(@PathParam("id") int id, Studio studio) {
+    public String editStudio(@PathParam("id") int id, Studio studio) {
 
         studioService.updateStudio(id, studio);
         return "redirect:/studios";
