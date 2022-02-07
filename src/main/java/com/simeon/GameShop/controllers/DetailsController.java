@@ -19,7 +19,7 @@ public class DetailsController {
     private GameService gameService;
 
     @GetMapping("/details/{id}")
-    public String getAllGames(@PathVariable("id") int id, Model model) {
+    public String Details(@PathVariable("id") int id, Model model) {
         Game game = gameService.getGameById(id);
         model.addAttribute("games", game);
         return "details";
