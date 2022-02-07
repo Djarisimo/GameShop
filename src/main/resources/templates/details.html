@@ -19,7 +19,7 @@
   <!-- Custom styles -->
   <link href="/css/style.css" rel="stylesheet">
   <link href="/css/style-responsive.css" rel="stylesheet" />
-
+  
 </head>
 
 <body>
@@ -118,7 +118,7 @@
               <b><i><td  th:text="'Price' + ' ' + ' - ' + ' ' +  ${game.price + ' ' + '$'}"></td></b></i>
               <hr>
               <h2><b>Product description</b></h2>
-              <td th:text="${game.description}"></td>  
+              <div class="game-description"><td th:text="${game.description}"></td></div>  
               <hr>
                <ul>
                 <h2><b>Product information</b></h2>

@@ -26,6 +26,11 @@ html, body
      font-size: 20px;
  }
  
+ .game-description{
+     
+     white-space: pre-line;
+ }
+ 
 body {
 
     color: #797979;
