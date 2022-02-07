@@ -115,16 +115,16 @@
               <td><img th:src="@{${game.pictureUrl}}" align="left" width="500" height="500"></a></td>
           <div class="description-design">
               <h1><b><td th:text="'Title' + ' ' + ' - ' + ' ' + ${game.name}"></b></td></h1>
-              <b><td  th:text="'Price' + ' ' + ' - ' + ' ' +  ${game.price + ' ' + '$'}"></td></b>
+              <b><i><td  th:text="'Price' + ' ' + ' - ' + ' ' +  ${game.price + ' ' + '$'}"></td></b></i>
               <hr>
               <h2><b>Product description</b></h2>
               <td th:text="${game.description}"></td>  
               <hr>
                <ul>
                 <h2><b>Product information</b></h2>
-              <h4><i><li th:text=" 'Studio' + ' ' + ' - ' + ' ' + ${game.studio.name}"></i></li></h4>
-              <h4><i><li th:text=" 'Genre' + ' ' + ' - ' + ' ' + ${game.genre.name}"></i></li></h4>
-              <h4><i><li th:text=" 'Platform' + ' ' + ' - ' + ' ' + ${game.platform.name}"></i></li></h4>
+                <h4><b><i><li th:text=" 'Studio' + ' ' + ' - ' + ' ' + ${game.studio.name}"></i></b></li></h4>
+                <h4><b><i><li th:text=" 'Genre' + ' ' + ' - ' + ' ' + ${game.genre.name}"></i></b></li></h4>
+              <h4><b><i><li th:text=" 'Platform' + ' ' + ' - ' + ' ' + ${game.platform.name}"></i></b></li></h4>
           </ul>
            </div>
            
