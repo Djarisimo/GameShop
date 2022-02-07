@@ -22,6 +22,9 @@ public class Game extends CommonObject {
     public BigDecimal price;
 
     public String pictureUrl;
+    
+    @Lob
+    public String description;
 
 //    @ManyToOne
 //    @JoinColumn(name = "studio_id")

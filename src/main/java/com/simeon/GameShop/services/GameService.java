@@ -59,4 +59,8 @@ public class GameService {
     public List<Game> findByKeyword(String keyword) {
         return gameRepository.findByNameOrPriceLike(keyword);
     }
+    
+   public Game getGameById(int id) {		
+		return gameRepository.findById(id).get();
+	}
 }

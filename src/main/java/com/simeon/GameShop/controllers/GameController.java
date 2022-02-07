@@ -81,5 +81,5 @@ public class GameController {
             
 		gameService.deleteGame(id);
                 return "redirect:/games";
-        } 
+        }      
 }

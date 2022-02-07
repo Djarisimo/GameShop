@@ -20,7 +20,8 @@
         <!-- Custom styles -->
         <link href="css/style.css" rel="stylesheet">
         <link href="css/style-responsive.css" rel="stylesheet" />
-
+        <style>a{color: #FFF;}a:hover {color: #00F}</style>
+      
     </head>
 
     <body>
@@ -156,7 +157,8 @@
                             <tr th:each="game:${games}">
 <!--                                <td  th:text="${game.id}"></td>-->
                                 <td><a th:href="@{${game.pictureUrl}}"> <img th:src="@{${game.pictureUrl}}" height=40 width=40> </a></td>
-                                <td  th:text="${game.name}"></td>
+<!--                                <td  th:text="${game.name}"></td>-->
+                                <td><a th:href="@{/details/{id}(id=${game.id})}" + th:text="${game.name}" ></a></td>
                                 <td  th:text="${game.studio.name}"></td>
                                 <td  th:text="${game.genre.name}"></td>
                                 <td  th:text="${game.platform.name}"></td>
@@ -177,11 +179,8 @@
                                                             <input id="id" name="id" type="hidden" class="form-control"
                                                                    th:value="${game.id}"/>
 
-                                                            <label for="gamePicture" class="col-form-label">Game Picture
-                                                                URL: <span class="text-danger">*</span></label>
-                                                            <input id="gamePicture" name="pictureUrl" type="url"
-                                                                   class="form-control" placeholder="Edit game image"
-                                                                   th:value="${game.pictureUrl}" required/>
+                                                            <label for="gamePicture" class="col-form-label">Game Picture URL: <span class="text-danger">*</span></label>
+                                                            <input id="gamePicture" name="pictureUrl" type="url" class="form-control" placeholder="Edit game image" th:value="${game.pictureUrl}" required/>
 
                                                             <label for="gameName" class="col-form-label">Game Title:
                                                                 <span class="text-danger">*</span></label>
@@ -218,6 +217,10 @@
 
                                                             <label for="gamePrice" class="col-form-label">Game Price: <span class="text-danger">*</span></label>
                                                             <input id="gamePrice" type="number" class="form-control" name="price" placeholder="Edit game price" th:value="${game.price}" autocomplete="off" min="1" required/>
+                                                            
+                                                            <label for="description" class="col-form-label">Description: <span class="text-danger">*</span></label>
+                                                            <textarea maxlength="900" type="text" class="form-control" id="description" rows="5" name="description" th:text="${game.description}" placeholder="Enter description" autocomplete="off" required></textarea>
+<!--                                                                 <div id="the-count" style="float: right;"><span id="current">0</span><span id="maximum">/ 900</span></div>-->
                                                         </div>
                                                         <div class="form-group">
                                                             <button type="submit" class="btn btn-primary">Save</button>
@@ -239,7 +242,7 @@
                                         </button>
                                     </form>-->
                                         <a class="btn btn-danger" th:href="@{/games/delete/(id=${game.id})}" onclick="return confirm('Are you sure you want to delete this game?');">Delete</a>
-                                    <!------------ Add to cart----------------- -->
+                                     <!------------ Add to cart----------------- -->
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-success" data-toggle="modal"
                                                 data-target="#cartModal" th:attrappend="data-target=${game.id}">Add to
@@ -308,7 +311,7 @@
                     <div class="modal-body">
                         <form th:action="@{/games}" method="post">
                             <div class="form-group">
-
+                                
                                 <label for="game-picture" class="col-form-label">Game Picture URL: <span class="text-danger">*</span></label>
                                 <input type="url" class="form-control" id="game-picture" name="pictureUrl" placeholder="Enter game image" required>
 
@@ -341,7 +344,11 @@
 
                                 <label for="game-price" class="col-form-label">Game Price: <span class="text-danger">*</span></label>
                                 <input type="number" class="form-control" id="game-price" name="price" placeholder="Enter game price" autocomplete="off" min="1" required>
-
+                                
+                                <label for="description" class="col-form-label">Description: <span class="text-danger">*</span></label>
+                                <textarea maxlength="900" type="text" class="form-control" id="description" rows="5" name="description" placeholder="Enter description" autocomplete="off" required></textarea>
+                                 <div id="the-count" style="float: right;"><span id="current">0</span><span id="maximum">/ 900</span></div>
+                                
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Save</button>
@@ -366,6 +373,38 @@
         <!--custome script for all page-->
         <script src="js/scripts.js"></script>
 
+        <script> $('textarea').keyup(function() { 
+            var characterCount = $(this).val().length,
+      current = $('#current'),
+      maximum = $('#maximum'),
+      theCount = $('#the-count');
+    
+        current.text(characterCount);
+        
+   if (characterCount < 300) {
+    current.css('color', '#666');
+  }
+  if (characterCount > 300 && characterCount < 500) {
+    current.css('color', '#793535');
+  }
+  if (characterCount > 500 && characterCount < 700) {
+    current.css('color', '#841c1c');
+  }
+  if (characterCount > 700 && characterCount < 800) {
+    current.css('color', '#8f0001');
+  }
+  
+  if (characterCount >= 800) {
+    maximum.css('color', '#8f0001');
+    current.css('color', '#8f0001');
+    theCount.css('font-weight','bold');
+  } else {
+    maximum.css('color','#666');
+    theCount.css('font-weight','normal');
+  }
+            });
+        </script>
+        
 
     </body>
 
