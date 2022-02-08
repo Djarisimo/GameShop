@@ -18,18 +18,18 @@ public class PlatformService {
 		return platformRepository.findAll();
 	}
 
-	public void addPlatform(Platform platform) {
+	public void addEditPlatform(Platform platform) {
 		platformRepository.save(platform);
 	}
 
-	public void updatePlatform(int id, Platform platform) {
-		Optional<Platform> optionalPlatform = platformRepository.findById(id);
-		if (optionalPlatform.isPresent() && platform.getName() != null) {
-			Platform foundPlatform = optionalPlatform.get();
-			foundPlatform.setName(platform.getName());
-			platformRepository.save(foundPlatform);
-		}
-	}
+//	public void updatePlatform(int id, Platform platform) {
+//		Optional<Platform> optionalPlatform = platformRepository.findById(id);
+//		if (optionalPlatform.isPresent() && platform.getName() != null) {
+//			Platform foundPlatform = optionalPlatform.get();
+//			foundPlatform.setName(platform.getName());
+//			platformRepository.save(foundPlatform);
+//		}
+//	}
 
 	public void deletePlatform(int id) {
 		platformRepository.deleteById(id);

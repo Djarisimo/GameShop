@@ -10,10 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.websocket.server.PathParam;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -45,13 +41,13 @@ public class GameController {
         } else {
             model.addAttribute("games", gameService.getAllGames());
         }
-
+        
         return "games";
     }
 
     @PostMapping("games")
     public String addGame(Game game) {
-        gameService.addGame(game);
+        gameService.addEditGame(game);
         return "redirect:/games";
     }
 
@@ -62,13 +58,11 @@ public class GameController {
 //
 //    }
     
-    @RequestMapping(value = "/games/edit", method = RequestMethod.POST)
-	public String editGame(Game game) {
-		
-		gameService.editGame(game);
-		return "redirect:/games";
-		
-	}
+    @PostMapping("/games/edit")
+    public String editGame(Game game) {
+        gameService.addEditGame(game);
+        return "redirect:/games";
+    }
 
 //    @PostMapping("games/{id}/delete")
 //    public String deleteGame(@PathParam("id") int id) {
@@ -76,10 +70,9 @@ public class GameController {
 //        return "redirect:/games";
 //    }
         
-        @RequestMapping(value = "/games/delete", method = RequestMethod.GET)
-        public String deleteGame(@RequestParam(name = "id") int id) {
-            
-		gameService.deleteGame(id);
-                return "redirect:/games";
-        }      
+    @GetMapping("/games/delete")
+    public String deleteGame(@RequestParam(name = "id") int id) {
+        gameService.deleteGame(id);
+        return "redirect:/games";
+    }
 }

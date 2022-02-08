@@ -17,7 +17,7 @@ public class GenreService {
         return genreRepository.findAll();
     }
 
-    public void addGenre(Genre genre) {
+    public void addEditGenre(Genre genre) {
         genreRepository.save(genre);
     }
 

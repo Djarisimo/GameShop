@@ -7,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import javax.websocket.server.PathParam;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -22,27 +20,21 @@ public class StudioController {
 
     @GetMapping("studios")
     public String getAllStudios(Model model) {
-
         List<Studio> studioList = studioService.getAllStudios();
-
         model.addAttribute("studios", studioList);
-
         return "studios";
     }
 
     @PostMapping("studios")
     public String addStudio(Studio studio) {
-
-        studioService.addStudio(studio);
+        studioService.addEditStudio(studio);
         return "redirect:/studios";
     }
 
     @PostMapping("studios/{id}")
     public String editStudio(@PathParam("id") int id, Studio studio) {
-
-        studioService.updateStudio(id, studio);
+        studioService.addEditStudio(studio);
         return "redirect:/studios";
-
     }
 
 //    @PostMapping("studios/{id}/delete")
@@ -51,8 +43,7 @@ public class StudioController {
 //        return "redirect:/studios";
 //    }
     
-    
-	@RequestMapping(value = "/studios/delete", method = RequestMethod.GET)
+    @RequestMapping("/studios/delete")
     public String deleteStudio(@RequestParam(name = "id") int id) {
         studioService.deleteStudio(id);
         return "redirect:/studios";

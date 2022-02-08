@@ -4,7 +4,6 @@ import com.simeon.GameShop.models.Game;
 import com.simeon.GameShop.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +17,20 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public void addGame(Game game) {
+    public void addEditGame(Game game) {
         gameRepository.save(game);
+    }
+    
+    public void deleteGame(int id) {
+        gameRepository.deleteById(id);
+    }
+
+    public List<Game> findByKeyword(String keyword) {
+        return gameRepository.findByNameOrPriceLike(keyword);
+    }
+    
+    public Game getGameById(int id) {
+        return gameRepository.findById(id).get();
     }
 
 //    public void updateGame(int id, Game game) {
@@ -46,21 +57,5 @@ public class GameService {
 //            }
 //            gameRepository.save(foundGame);
 //        }
-//    }
-    
-	public void editGame(Game game) {
-		gameRepository.save(game);
-	}
-
-    public void deleteGame(int id) {
-        gameRepository.deleteById(id);
-    }
-
-    public List<Game> findByKeyword(String keyword) {
-        return gameRepository.findByNameOrPriceLike(keyword);
-    }
-    
-   public Game getGameById(int id) {		
-		return gameRepository.findById(id).get();
-	}
+//    }  
 }

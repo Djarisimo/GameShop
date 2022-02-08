@@ -18,18 +18,18 @@ public class StudioService {
 		return studioRepository.findAll();
 	}
 
-	public void addStudio(Studio studio) {
+	public void addEditStudio(Studio studio) {
 		studioRepository.save(studio);
 	}
 
-	public void updateStudio(int id, Studio studio) {
-		Optional<Studio> optionalStudio = studioRepository.findById(id);
-		if (optionalStudio.isPresent() && studio.getName() != null) {
-			Studio foundStudio = optionalStudio.get();
-			foundStudio.setName(studio.getName());
-			studioRepository.save(foundStudio);
-		}
-	}
+//	public void updateStudio(int id, Studio studio) {
+//		Optional<Studio> optionalStudio = studioRepository.findById(id);
+//		if (optionalStudio.isPresent() && studio.getName() != null) {
+//			Studio foundStudio = optionalStudio.get();
+//			foundStudio.setName(studio.getName());
+//			studioRepository.save(foundStudio);
+//		}
+//	}
 
 	public void deleteStudio(int id) {
 		studioRepository.deleteById(id);
