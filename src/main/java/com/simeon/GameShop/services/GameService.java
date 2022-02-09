@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 @Service
 public class GameService {
@@ -13,8 +16,13 @@ public class GameService {
     @Autowired
     private GameRepository gameRepository;
 
-    public List<Game> getAllGames() {
-        return gameRepository.findAll();
+//    public List<Game> getAllGames() {
+//        return gameRepository.findAll();
+//    }
+    
+    public Page<Game> findPaginated(int pageNumber, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
+        return gameRepository.findAll(pageable);
     }
 
     public void addEditGame(Game game) {
@@ -25,7 +33,7 @@ public class GameService {
         gameRepository.deleteById(id);
     }
 
-    public List<Game> findByKeyword(String keyword) {
+    public List<Game> findByNameOrPriceLike(String keyword) {
         return gameRepository.findByNameOrPriceLike(keyword);
     }
     

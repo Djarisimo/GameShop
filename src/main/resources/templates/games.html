@@ -76,7 +76,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a class="" th:href="@{/games}">
+                            <a class="" th:href="@{/}">
                                 <i class="fa fa-gamepad"></i>
                                 <span>Games</span>
                             </a>
@@ -128,17 +128,19 @@
                         <h3><i class="fa fa-list-ul"></i> List of games</h3>
                     </header>         
                     <br><br>
-
+            
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal" style="float: left;">Create game</button>
 
                     <div class="form-center">
-                        <form class="form-inline" th:action="@{/games}" method="get"> 
+                        <form class="form-inline" th:action="@{/search}" method="get"> 
                             <div class="form-group mx-sm-3 mb-2">
                                 <input class="form-control" type="text" name="keyword" placeholder="Find by Title & Price" size="30" autocomplete="off">  
                             </div>
                             <button type="submit" class="btn btn-info">Filter</button> 
+                            <a class="btn btn-info" th:href="@{/}">Back</a> 
                         </form>
                     </div>
+                    
                     <br>
                     <table class="table table-hover table-advance table-bordered">
                         <thead>
@@ -216,7 +218,7 @@
                                                             </select>
 
                                                             <label for="gamePrice" class="col-form-label">Game Price: <span class="text-danger">*</span></label>
-                                                            <input id="gamePrice" type="number" class="form-control" name="price" placeholder="Edit game price" th:value="${game.price}" autocomplete="off" min="1" required/>
+                                                            <input id="gamePrice" type="number" class="form-control" name="price" placeholder="Edit game price" th:value="${game.price}" autocomplete="off" min="1" step=".01" required/>
                                                             
                                                             <label for="description" class="col-form-label">Description: <span class="text-danger">*</span></label>
                                                             <textarea maxlength="1000" type="text" class="form-control" id="description" rows="5" name="description" th:text="${game.description}" placeholder="Enter description" autocomplete="off" required></textarea>
@@ -228,9 +230,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-info" data-dismiss="modal">
-                                                        Close
-                                                    </button>
+                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -295,7 +295,20 @@
                             </tr>
                         </tbody>
                     </table>
-                                      
+                    
+                     <!----- Paging-->
+                          <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li class="page-item" th:if="${games.totalPages > 0}"
+                              th:classappend="${pageNumber==games.number + 1} ?active"
+                              th:each="pageNumber : ${pageNumbers}">
+                              <a th:href="@{/(size=${games.size}, page=${pageNumber})}"
+                               th:text=${pageNumber}
+                               class="page-link"></a></li>
+                        </ul>
+                      </nav> 
+                          <!-- Paging End-->
+                          
                     <!-- page end-->
                 </section>
             </section>
@@ -343,7 +356,7 @@
                                 </select>
 
                                 <label for="game-price" class="col-form-label">Game Price: <span class="text-danger">*</span></label>
-                                <input type="number" class="form-control" id="game-price" name="price" placeholder="Enter game price" autocomplete="off" min="1" required>
+                                <input type="number" class="form-control" id="game-price" name="price" placeholder="Enter game price" autocomplete="off" min="1" step=".01" required>
                                 
                                 <label for="description" class="col-form-label">Description: <span class="text-danger">*</span></label>
                                 <textarea maxlength="1000" type="text" class="form-control" id="description" rows="5" name="description" placeholder="Enter description" autocomplete="off" required></textarea>
