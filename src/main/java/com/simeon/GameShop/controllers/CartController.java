@@ -26,10 +26,7 @@ public class CartController {
     }
 
     @PostMapping("cart-items")
-    public String addGameToCartItems(Game game) {
-        
-        System.out.println(game);
-        
+    public String addGameToCartItems(Game game) {     
         cartItemService.addGameToCart(game);
         return "redirect:/cart-items";
     }
