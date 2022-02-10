@@ -135,9 +135,9 @@
                                 <td><a th:href="@{/details/{id}(id=${cart.game.id})}" + th:text="${cart.game.name}" ></a></td>
                                 <td th:text="${cart.game.price + ' ' + '$'}"></td>
                                 <td  th:text="${cart.game.platform.name}"></td> 
-                                 <td  th:text="${cart.quantity}"></td>
-                                 <td  th:text="${cart.game.price * cart.quantity}"></td>
-                                 <td> <a class="btn btn-danger" th:href="@{/cart-items/delete/(id=${cart.id})}" onclick="return confirm('Are you sure you want to remove this game from cart?');"><i class="fa fa-times"></i> Delete</a></td>
+                                <td  th:text="${cart.quantity}"></td>
+                                <td th:text="${cart.game.price * cart.quantity + ' ' + '$'}" style="font-weight:bold"></td>
+                                <td> <a class="btn btn-danger" th:href="@{/cart-items/delete/(id=${cart.id})}" onclick="return confirm('Are you sure you want to remove this game from cart?');"><i class="fa fa-times"></i> Delete</a></td>
 <!--                        <form th:action="@{/cart-items/games/{id}/delete(id=${cart.id})}" method="POST">
                             <td>
                                 <button class="btn btn-danger btn-sm btn-delete"
