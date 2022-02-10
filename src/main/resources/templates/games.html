@@ -261,7 +261,7 @@
                                                                                                         </button>-->
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form th:action="@{/cart-items/games}" method="POST">
+                                                    <form th:action="@{/cart-items}" method="POST">
                                                         <table class="table table-image">
                                                             <thead>
                                                             <tr>
@@ -269,6 +269,7 @@
                                                                 <th>Game Title</th>
                                                                 <th>Price</th>
                                                                 <th>Platform</th>
+                                                                <th>Quantity</th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -277,15 +278,17 @@
                                                                 <td th:text="${game.name}"></td>
                                                                 <td th:text="${game.price + '$'}"></td>
                                                                 <td th:text="${game.platform.name}"></td>
+                                                                <input type="hidden" name="id" th:value="${game.id}"/>
+<!--                                                                <td><input type="number" min="1" value="1" name="quantity" class="form-control"></td>-->
                                                             </tr>
                                                         </tbody>
                                                     </table> 
-                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
                                                     </form>
                                                 </div>
                                         
-                                                <div class="modal-footer border-top-0 d-flex justify-content-between">                                                   
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                                                     
+                                                <div class="modal-footer">                                                   
+                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>                                                     
                                                 </div>
                                             </div>
                                         </div>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.websocket.server.PathParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CartController {
@@ -16,7 +17,7 @@ public class CartController {
     @Autowired
     private CartItemService cartItemService;
 
-    @GetMapping("/cart-items")
+    @GetMapping("cart-items")
     public String getAllCartItems(Model model) {
 
         model.addAttribute("shoppingCart", cartItemService.getAllCartItems());
@@ -24,16 +25,24 @@ public class CartController {
         return "shoppingCart";
     }
 
-    @PostMapping("/cart-items/games")
+    @PostMapping("cart-items")
     public String addGameToCartItems(Game game) {
-        System.out.println("game" + game);
+        
+        System.out.println(game);
+        
         cartItemService.addGameToCart(game);
-        return "redirect:/shoppingCart";
+        return "redirect:/cart-items";
     }
 
-    @PostMapping("/cart-items/games/{gameId}/delete")
-    public String removeGameFromCartItems(@PathParam("gameId") int gameId) {
-        cartItemService.removeGameFromCart(gameId);
-        return "redirect:/shoppingCart";
+//    @PostMapping("/cart-items/games/{gameId}/delete")
+//    public String removeGameFromCartItems(@PathParam("gameId") int gameId) {
+//        cartItemService.removeGameFromCart(gameId);
+//        return "redirect:/shoppingCart";
+//    }
+    
+    @GetMapping("/cart-items/delete")
+    public String deleteGameFromCart(@RequestParam(name = "id") int id) {
+        cartItemService.deleteGameFromCart(id);
+        return "redirect:/cart-items";
     }
 }

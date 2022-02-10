@@ -3,6 +3,7 @@ package com.simeon.GameShop.services;
 import com.simeon.GameShop.models.CartItem;
 import com.simeon.GameShop.models.Game;
 import com.simeon.GameShop.repositories.CartItemRepository;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,21 +31,25 @@ public class CartItemService {
         }
     }
 
-    public void removeGameFromCart(int gameId) {
-        Optional<CartItem> optionalItem = findByGameId(gameId);
-        if (optionalItem.isPresent()) {
-            CartItem cartItems = optionalItem.get();
-            if (cartItems.getQuantity() == 1) {
-                cartItemRepository.delete(cartItems);
-            } else {
-                cartItems.setQuantity(cartItems.getQuantity() - 1);
-                cartItemRepository.save(cartItems);
-            }
-        }
-        // Consider throwing an error if cart item not found by id
-    }
+//    public void removeGameFromCart(int gameId) {
+//        Optional<CartItem> optionalItem = findByGameId(gameId);
+//        if (optionalItem.isPresent()) {
+//            CartItem cartItems = optionalItem.get();
+//            if (cartItems.getQuantity() == 1) {
+//                cartItemRepository.delete(cartItems);
+//            } else {
+//                cartItems.setQuantity(cartItems.getQuantity() - 1);
+//                cartItemRepository.save(cartItems);
+//            }
+//        }
+//        // Consider throwing an error if cart item not found by id
+//    }
 
     private Optional<CartItem> findByGameId(int gameId) {
         return cartItemRepository.findByGameId(gameId);
     }
+    
+    public void deleteGameFromCart(int id) {
+        cartItemRepository.deleteById(id);
+    }   
 }

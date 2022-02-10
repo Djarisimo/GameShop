@@ -24,7 +24,7 @@ public class Game extends CommonObject {
     public String pictureUrl;
     
     @Lob
-    public String description;
+    public String description; 
 
 //    @ManyToOne
 //    @JoinColumn(name = "studio_id")
