@@ -111,10 +111,18 @@
     <section id="main-content">
       <section class="wrapper">          
           <tr th:each="game:${games}"> 
-              <td><img th:src="@{${game.pictureUrl}}" align="left" width="500" height="500"></a></td>
+              <td><img th:src="@{${game.pictureUrl}}" align="left" width="300" height="300"></a></td>
           <div class="description-design">
-              <h1><b><td th:text="'Title' + ' ' + ' - ' + ' ' + ${game.name}"></b></td></h1>
-              <b><i><td  th:text="'Price' + ' ' + ' - ' + ' ' +  ${game.price + ' ' + '$'}"></td></b></i>
+              <h1><b><td th:text="'Title' + ' ' + ' - ' + ' ' + ${game.name}"></b></td></h1>         
+              <b><i><td  th:text="'Price' + ' ' + ' - ' + ' ' +  ${game.price + ' ' + '$'}"></td></b></i> 
+              
+              <div class="btn-group"> 
+                  <form th:action="@{/cart-items}" method="POST">
+                      <input type="hidden" name="id" th:value="${game.id}"/>
+                      <button type="submit" class="btn btn-success">Add to cart</button>
+                  </form> 
+              </div>
+              
               <hr>
               <h2><b>Product description</b></h2>
               <div class="game-description"><td th:text="${game.description}"></td></div>  
