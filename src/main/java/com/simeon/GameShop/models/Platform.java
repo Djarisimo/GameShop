@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 @Setter
 public class Platform extends CommonObject {
 
-    public String name;
+    private String name;
 
 //    @ManyToOne
 //    @JoinColumn(name = "game_id")

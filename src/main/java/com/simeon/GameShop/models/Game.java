@@ -18,14 +18,14 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Game extends CommonObject {
 
-    public String name;
+    private String name;
 
-    public BigDecimal price;
+    private BigDecimal price;
 
-    public String pictureUrl;
+    private String pictureUrl;
     
     @Lob
-    public String description; 
+    private String description; 
 
 //    @ManyToOne
 //    @JoinColumn(name = "studio_id")
@@ -40,17 +40,17 @@ public class Game extends CommonObject {
     
         @ManyToOne
 	@JoinColumn(name="studioid", insertable=false, updatable=false)
-	public Studio studio;
-	public Integer studioid;	
+	private Studio studio;
+	private Integer studioid;	
 	
 	@ManyToOne
 	@JoinColumn(name="genreid", insertable=false, updatable=false)
-	public Genre genre;
-	public Integer genreid;
+	private Genre genre;
+	private Integer genreid;
         
         @ManyToOne
 	@JoinColumn(name="platformid", insertable=false, updatable=false)
-	public Platform platform;
-	public Integer platformid;
+	private Platform platform;
+	private Integer platformid;
 
 }
