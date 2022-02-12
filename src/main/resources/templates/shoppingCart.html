@@ -137,7 +137,7 @@
                                 <td  th:text="${cart.game.platform.name}"></td> 
                            
                             <form action="/cart-items/update" method="post">
-                                  <td><input type="number" name="quantity" th:value="${cart.quantity}" min="1"/>
+                                  <td><input type="number" name="quantity" th:value="${cart.quantity}" min="1" required/>
                                   <button class="btn btn-success btn-sm btn-custom" type="submit"><i class="fa fa-check"></i></button></td>
                                    <input type="hidden" th:value="${cart.id}" name="id"/>
                             </form> 
