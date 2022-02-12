@@ -1,7 +1,10 @@
 package com.simeon.GameShop.controllers;
 
+import com.simeon.GameShop.models.CartItem;
 import com.simeon.GameShop.models.Game;
 import com.simeon.GameShop.services.CartItemService;
+import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +22,21 @@ public class CartController {
 
     @GetMapping("cart-items")
     public String getAllCartItems(Model model) {
-        model.addAttribute("shoppingCart", cartItemService.getAllCartItems());
+        
+        List<CartItem> list = cartItemService.getAllCartItems();
+        
+        model.addAttribute("shoppingCart", list);
+        
+        BigDecimal totalPrice = new BigDecimal(0);
+        for (int i = 0; i < list.size(); i++) {
+            totalPrice = totalPrice.add(list.get(i).getGame().getPrice().multiply(
+            
+            
+            new BigDecimal(list.get(i).getQuantity())
+            ) );
+        }
+        model.addAttribute("totalPrice", totalPrice);
+        
         return "shoppingCart";
     }
 

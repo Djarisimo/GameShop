@@ -29,10 +29,14 @@
 
     <form class="login-form" th:action="@{/login}" method="post">
 	    <div style="text-align:center; font-size:20px; color:green; font-weight:bold">  
-	    	<span th:utext="${message}"></span> 
+	    	<span th:text="${message}"></span> 
 		</div>
+        
+
+        
       <div class="login-wrap">
         <p class="login-img"><i class="fa fa-gamepad"></i></p>
+        <span th:text="${param.error != null ? 'Wrong credentials' : ''}">Search Query</span>
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
           <input type="text" class="form-control" placeholder="Username" name="username" autofocus autocomplete="off" minlength="3" required>
@@ -41,6 +45,9 @@
           <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>
           <input type="password" class="form-control" placeholder="Password" name="password" pattern=".{3,}" title="Password must contain 3 or more characters." required>
         </div>
+        
+        
+        
         <button class="btn btn-danger btn-lg btn-block" type="submit">Login</button>
         <a class="btn btn-warning btn-lg btn-block" th:href="@{/register}">Register</a>
       </div>
