@@ -30,7 +30,21 @@ public class CartItemService {
             cartItemRepository.save(new CartItem(1, game));
         }
     }
-
+    
+    public CartItem updateGameToCart(int quantity, int id) {
+        CartItem cartItem = cartItemRepository.findById(id).get();
+        cartItem.setQuantity(quantity);
+        return cartItemRepository.save(cartItem);
+    }
+    
+    private Optional<CartItem> findByGameId(int gameId) {
+        return cartItemRepository.findByGameId(gameId);
+    }
+    
+    public void deleteGameFromCart(int id) {
+        cartItemRepository.deleteById(id);
+    }  
+    
 //    public void removeGameFromCart(int gameId) {
 //        Optional<CartItem> optionalItem = findByGameId(gameId);
 //        if (optionalItem.isPresent()) {
@@ -43,13 +57,5 @@ public class CartItemService {
 //            }
 //        }
 //        // Consider throwing an error if cart item not found by id
-//    }
-
-    private Optional<CartItem> findByGameId(int gameId) {
-        return cartItemRepository.findByGameId(gameId);
-    }
-    
-    public void deleteGameFromCart(int id) {
-        cartItemRepository.deleteById(id);
-    }   
+//    } 
 }

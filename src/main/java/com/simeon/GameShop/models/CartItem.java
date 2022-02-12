@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 @Getter
@@ -16,7 +17,7 @@ import javax.persistence.ManyToOne;
 @AllArgsConstructor
 public class CartItem extends CommonObject {
     private int quantity;
-
+    
     @ManyToOne
     @JoinColumn(name = "game_id")
     private Game game;

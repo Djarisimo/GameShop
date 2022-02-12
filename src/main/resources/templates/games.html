@@ -178,8 +178,7 @@
                                                 <div class="modal-body">
                                                     <form th:action="@{/games/edit}" method="post">
                                                         <div class="form-group">
-                                                            <input id="id" name="id" type="hidden" class="form-control"
-                                                                   th:value="${game.id}"/>
+                                                            <input id="id" name="id" type="hidden" class="form-control" th:value="${game.id}"/>
 
                                                             <label for="gamePicture" class="col-form-label">Game Picture URL: <span class="text-danger">*</span></label>
                                                             <input id="gamePicture" name="pictureUrl" type="url" class="form-control" placeholder="Edit game image" th:value="${game.pictureUrl}" required/>

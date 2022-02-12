@@ -19,15 +19,19 @@ public class CartController {
 
     @GetMapping("cart-items")
     public String getAllCartItems(Model model) {
-
         model.addAttribute("shoppingCart", cartItemService.getAllCartItems());
-
         return "shoppingCart";
     }
 
     @PostMapping("cart-items")
     public String addGameToCartItems(Game game) {     
         cartItemService.addGameToCart(game);
+        return "redirect:/cart-items";
+    }
+    
+    @PostMapping("/cart-items/update")
+    public String updateGameToCartItems(@RequestParam("quantity") int quantity, int id) {
+        cartItemService.updateGameToCart(quantity, id);
         return "redirect:/cart-items";
     }
 

@@ -115,7 +115,7 @@
                     </header> 
                     <br>
                     <p><a class="btn btn-success" href="/"><i class="fa fa-arrow-circle-o-left"></i> Continue shopping</a></p><br>  
-                  
+                 
                     <table class="table table-hover table-advance table-bordered">
                         <thead>
                             <tr>
@@ -135,7 +135,13 @@
                                 <td><a th:href="@{/details/{id}(id=${cart.game.id})}" + th:text="${cart.game.name}" ></a></td>
                                 <td th:text="${cart.game.price + ' ' + '$'}"></td>
                                 <td  th:text="${cart.game.platform.name}"></td> 
-                                <td  th:text="${cart.quantity}"></td>
+                           
+                            <form action="/cart-items/update" method="post">
+                                  <td><input type="number" name="quantity" th:value="${cart.quantity}" min="1"/>
+                                  <button class="btn btn-success btn-sm btn-custom" type="submit"><i class="fa fa-check"></i></button></td>
+                                   <input type="hidden" th:value="${cart.id}" name="id"/>
+                            </form> 
+                                   
                                 <td th:text="${cart.game.price * cart.quantity + ' ' + '$'}" style="font-weight:bold"></td>
                                 <td> <a class="btn btn-danger" th:href="@{/cart-items/delete/(id=${cart.id})}" onclick="return confirm('Are you sure you want to remove this game from cart?');"><i class="fa fa-times"></i> Delete</a></td>
 <!--                        <form th:action="@{/cart-items/games/{id}/delete(id=${cart.id})}" method="POST">
@@ -145,11 +151,18 @@
                                     <i class="fa fa-times"></i></button>
                             </td>
                         </form>--> 
-                            </tr>    
+                            </tr>   
+                            <tr th:each="cart:${shoppingCart}">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><b th:text="${'Total: ' + cart.game.price * cart.quantity + ' ' + '$'}"></b></td>
+                            </tr>
                         </tbody>                      
                     </table>
-                       
-<!--                   <button type="button" class="btn btn-primary btn-lg btn-block">Go to checkout </button>-->
+                   
               
                     <br><hr>
                     <div class="col-md-2" style="float: right">
@@ -164,6 +177,9 @@
                             </div>
                         </div>
                     </div>
+                    
+<!--                  <button type="button" class="btn btn-primary btn-lg">Go to checkout </button>-->
+                
                     <!-- page end-->
                 </section>
             </section>
