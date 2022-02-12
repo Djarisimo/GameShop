@@ -1,6 +1,8 @@
 package com.simeon.GameShop.controllers;
 
+import com.simeon.GameShop.models.CartItem;
 import com.simeon.GameShop.models.Genre;
+import com.simeon.GameShop.services.CartItemService;
 import com.simeon.GameShop.services.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +18,17 @@ public class GenreController {
 
     @Autowired
     private GenreService genreService;
+    
+    @Autowired
+    private CartItemService cartItemService;
 
     @GetMapping("genres")
     public String getAllGenres(Model model) {
         List<Genre> genreList = genreService.getAllGenres();
         model.addAttribute("genres", genreList);
+        
+        List<CartItem> list = cartItemService.getAllCartItems();
+        model.addAttribute("shoppingCart", list);
         return "genres";
     }
 

@@ -27,8 +27,6 @@
 
   <div class="container">
       
-    <p>Delete this</p>
-      
     <form class="login-form" th:action="@{/login}" method="post">
 	    <div style="text-align:center; font-size:20px; color:green; font-weight:bold">  
 	    	<span th:text="${message}"></span> 
@@ -36,7 +34,7 @@
         
       <div class="login-wrap">
         <p class="login-img"><i class="fa fa-gamepad"></i></p>
-        <span th:text="${param.error != null ? 'Wrong credentials' : ''}">Search Query</span>
+        <span th:text="${param.error != null ? 'Wrong credentials' : ''}"></span>
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
           <input type="text" class="form-control" placeholder="Username" name="username" autofocus autocomplete="off" minlength="3" required>

@@ -1,6 +1,8 @@
 package com.simeon.GameShop.controllers;
 
+import com.simeon.GameShop.models.CartItem;
 import com.simeon.GameShop.models.Game;
+import com.simeon.GameShop.services.CartItemService;
 import com.simeon.GameShop.services.GameService;
 import com.simeon.GameShop.services.GenreService;
 import com.simeon.GameShop.services.PlatformService;
@@ -32,6 +34,9 @@ public class GameController {
 
     @Autowired
     private PlatformService platformService;
+    
+    @Autowired
+    private CartItemService cartItemService;
 
 
     @GetMapping("/")
@@ -55,6 +60,9 @@ public class GameController {
         model.addAttribute("studios", studioService.getAllStudios());
         model.addAttribute("genres", genreService.getAllGenres());
         model.addAttribute("platforms", platformService.getAllPlatforms());
+        
+        List<CartItem> list = cartItemService.getAllCartItems();
+        model.addAttribute("shoppingCart", list);
 
         return "games";
     }

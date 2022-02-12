@@ -1,6 +1,8 @@
 package com.simeon.GameShop.controllers;
 
+import com.simeon.GameShop.models.CartItem;
 import com.simeon.GameShop.models.Studio;
+import com.simeon.GameShop.services.CartItemService;
 import com.simeon.GameShop.services.StudioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +19,17 @@ public class StudioController {
 
     @Autowired
     private StudioService studioService;
+    
+    @Autowired
+    private CartItemService cartItemService;
 
     @GetMapping("studios")
     public String getAllStudios(Model model) {
         List<Studio> studioList = studioService.getAllStudios();
         model.addAttribute("studios", studioList);
+        
+        List<CartItem> list = cartItemService.getAllCartItems();
+        model.addAttribute("shoppingCart", list);
         return "studios";
     }
 

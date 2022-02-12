@@ -1,6 +1,8 @@
 package com.simeon.GameShop.controllers;
 
+import com.simeon.GameShop.models.CartItem;
 import com.simeon.GameShop.models.Platform;
+import com.simeon.GameShop.services.CartItemService;
 import com.simeon.GameShop.services.PlatformService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +18,17 @@ public class PlatformController {
 
     @Autowired
     private PlatformService platformService;
+    
+    @Autowired
+    private CartItemService cartItemService;
 
     @GetMapping("platforms")
     public String getAllPlatforms(Model model) {
         List<Platform> platformList = platformService.getAllPlatforms();
         model.addAttribute("platforms", platformList);
+        
+        List<CartItem> list = cartItemService.getAllCartItems();
+        model.addAttribute("shoppingCart", list);
         return "platforms";
     }
 

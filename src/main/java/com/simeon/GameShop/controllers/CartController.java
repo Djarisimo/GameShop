@@ -24,18 +24,16 @@ public class CartController {
     public String getAllCartItems(Model model) {
         
         List<CartItem> list = cartItemService.getAllCartItems();
-        
-        model.addAttribute("shoppingCart", list);
-        
+     
         BigDecimal totalPrice = new BigDecimal(0);
         for (int i = 0; i < list.size(); i++) {
             totalPrice = totalPrice.add(list.get(i).getGame().getPrice().multiply(
-            
-            
+                 
             new BigDecimal(list.get(i).getQuantity())
             ) );
         }
         model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("shoppingCart", list);
         
         return "shoppingCart";
     }
