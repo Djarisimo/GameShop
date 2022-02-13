@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ApplicationController {
     
-        @Autowired
-        private CartItemService cartItemService;
+    @Autowired
+    private CartItemService cartItemService;
 
-	@GetMapping("index")
-	public String index(Model model) {
-            List<CartItem> list = cartItemService.getAllCartItems();
-            model.addAttribute("shoppingCart", list);
-            return "index";
-	}
-	
-	@GetMapping("login")
-	public String login() {
-            return "login";
-	}
-	
-	@GetMapping("logout")
-	public String logout() {
-            return "login";
-	}
-        
-	@GetMapping("register")
-	public String register() {
-            return "register";
-	}
+    @GetMapping("index")
+    public String index(Model model) {
+        List<CartItem> list = cartItemService.getAllCartItems();
+        model.addAttribute("shoppingCart", list);
+        return "index";
+    }
+
+    @GetMapping("login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("logout")
+    public String logout() {
+        return "login";
+    }
+
+    @GetMapping("register")
+    public String register() {
+        return "register";
+    }
 }

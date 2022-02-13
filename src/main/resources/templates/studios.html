@@ -141,7 +141,7 @@
                                                     <h5 class="modal-title" id="editModalLabel">Edit studio</h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form th:action="@{/studios/{id}(id=${studio.id})}" method="post">
+                                                    <form th:action="@{/studios/edit}" method="post">
                                                         <div class="form-group">
                                                             <input id="id" name="id" type="hidden" class="form-control"
                                                                    th:value="${studio.id}"/>

@@ -3,16 +3,14 @@ package com.simeon.GameShop.services;
 import com.simeon.GameShop.models.CartItem;
 import com.simeon.GameShop.models.Game;
 import com.simeon.GameShop.repositories.CartItemRepository;
-import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CartItemService {
-
+    
     @Autowired
     private CartItemRepository cartItemRepository;
 

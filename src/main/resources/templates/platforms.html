@@ -144,7 +144,7 @@
                                                     <h5 class="modal-title" id="editModalLabel">Edit platform: </h5>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form th:action="@{/platforms/{id}(id=${platform.id})}" method="post">
+                                                    <form th:action="@{/platforms/edit}" method="post">
                                                         <div class="form-group">
                                                             <input id="id" name="id" type="hidden" class="form-control"
                                                                    th:value="${platform.id}"/>

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 public class GameController {
 
@@ -38,7 +37,7 @@ public class GameController {
     @Autowired
     private CartItemService cartItemService;
 
-
+    
     @GetMapping("/")
     public String getAllGames(Model model, String keyword, @RequestParam("page") Optional<Integer> page,@RequestParam("size") Optional<Integer> size) {
 
@@ -81,29 +80,29 @@ public class GameController {
         gameService.addEditGame(game);
         return "redirect:/";
     }
-
-//    @PostMapping("games/{id}")
-//    public String updateGame(@PathParam("id") int id, Game game) {
-//        gameService.updateGame(id, game);
-//        return "redirect:/games";
-//
-//    }
     
     @PostMapping("/games/edit")
     public String editGame(Game game) {
         gameService.addEditGame(game);
         return "redirect:/";
     }
-
-//    @PostMapping("games/{id}/delete")
-//    public String deleteGame(@PathParam("id") int id) {
-//        gameService.deleteGame(id);
-//        return "redirect:/games";
-//    }
-        
+    
     @GetMapping("/games/delete")
     public String deleteGame(@RequestParam(name = "id") int id) {
         gameService.deleteGame(id);
         return "redirect:/";
     }
+
+//    @PostMapping("games/{id}")
+//    public String updateGame(@PathParam("id") int id, Game game) {
+//        gameService.updateGame(id, game);
+//        return "redirect:/games";
+//
+//    }  
+
+//    @PostMapping("games/{id}/delete")
+//    public String deleteGame(@PathParam("id") int id) {
+//        gameService.deleteGame(id);
+//        return "redirect:/games";
+//    }       
 }

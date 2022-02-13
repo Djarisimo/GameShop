@@ -11,10 +11,8 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 @Getter
 @Setter
-public class CommonObject {
-	
-	@Id
+public class CommonObject {	
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-
+    private Integer id;
 }

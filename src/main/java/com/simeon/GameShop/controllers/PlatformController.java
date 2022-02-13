@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import javax.websocket.server.PathParam;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,9 +37,15 @@ public class PlatformController {
         return "redirect:/platforms";
     }
 
-    @PostMapping("platforms/{id}")
-    public String editPlatform(@PathParam("id") int id, Platform platform) {
-        platformService.addEditPlatform( platform);
+    @PostMapping("platforms/edit")
+    public String editPlatform(Platform platform) {
+        platformService.addEditPlatform(platform);
+        return "redirect:/platforms";
+    }
+    
+    @GetMapping("/platforms/delete")
+    public String deletePlatform(@RequestParam(name = "id") int id) {
+        platformService.deletePlatform(id);
         return "redirect:/platforms";
     }
 
@@ -49,10 +54,4 @@ public class PlatformController {
 //        platformService.deletePlatform(id);
 //        return "redirect:/platforms";
 //    }
-    
-    @GetMapping("/platforms/delete")
-    public String deletePlatform(@RequestParam(name = "id") int id) {
-        platformService.deletePlatform(id);
-        return "redirect:/platforms";
-    }
 }

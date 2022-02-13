@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import javax.websocket.server.PathParam;
 import java.util.List;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -38,11 +37,16 @@ public class GenreController {
         return "redirect:/genres";
     }
 
-    @PostMapping("genres/{id}")
-    public String editGenre(@PathParam("id") int id, Genre genre) {
+    @PostMapping("/genres/edit")
+    public String editGenre(Genre genre) {
         genreService.addEditGenre(genre);
         return "redirect:/genres";
-
+    }
+    
+    @GetMapping("/genres/delete")
+    public String deleteGenre(@RequestParam(name = "id") int id) {
+        genreService.deleteGenre(id);
+        return "redirect:/genres";
     }
 
 //    @PostMapping("genres/{id}/delete")
@@ -50,10 +54,4 @@ public class GenreController {
 //        genreService.deleteGenre(id);
 //        return "redirect:/genres";
 //    }
-    
-    @GetMapping("/genres/delete")
-    public String deleteGenre(@RequestParam(name = "id") int id) {
-        genreService.deleteGenre(id);
-        return "redirect:/genres";
-    }
 }

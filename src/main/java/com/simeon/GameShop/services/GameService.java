@@ -5,7 +5,6 @@ import com.simeon.GameShop.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,10 +14,6 @@ public class GameService {
 
     @Autowired
     private GameRepository gameRepository;
-
-//    public List<Game> getAllGames() {
-//        return gameRepository.findAll();
-//    }
     
     public Page<Game> findPaginated(int pageNumber, int pageSize) {
         Pageable pageable = PageRequest.of(pageNumber - 1, pageSize);
@@ -40,6 +35,11 @@ public class GameService {
     public Game getGameById(int id) {
         return gameRepository.findById(id).get();
     }
+    
+//    public List<Game> getAllGames() {
+//        return gameRepository.findAll();
+//    }
+    
 
 //    public void updateGame(int id, Game game) {
 //        Optional<Game> optionalGame = gameRepository.findById(id);
