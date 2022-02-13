@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/gameshop.png">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="img/gameshop.png">
 
-  <title>Register</title>
+        <title>Register</title>
 
-  <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="css/font-awesome.css" rel="stylesheet" />
-  <!-- Custom styles -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet" />
+        <!-- bootstrap theme -->
+        <link href="css/bootstrap-theme.css" rel="stylesheet">
+        <!--external css-->
+        <!-- font icon -->
+        <link href="css/elegant-icons-style.css" rel="stylesheet" />
+        <link href="css/font-awesome.css" rel="stylesheet" />
+        <!-- Custom styles -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet" />
 
-</head>
+    </head>
 
-<body class="login-img3-body">
-
-  <div class="container">
-
-    <form class="login-form" th:action="@{/users/addNew}" method="post">
-      <div class="login-wrap">
-        <p class="login-img"><i class="fa fa-gamepad"></i></p>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-user"></i></span>
-          <input type="text" class="form-control" placeholder="Username" name="username" autofocus autocomplete="off" minlength="3" required>
+    <body class="login-img3-body">
+        <div class="container">
+            <form class="login-form" th:action="@{/users/addNew}" method="post">
+                <div class="login-wrap">
+                    <p class="login-img"><i class="fa fa-gamepad"></i></p>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Username" name="username" autofocus autocomplete="off" minlength="3" required>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>
+                        <input type="password" class="form-control" placeholder="Password" name="password" pattern=".{3,}" title="Password must contain 3 or more characters." required>
+                    </div>
+                    <button class="btn btn-danger btn-lg btn-block" type="submit">Register</button>
+                </div>
+            </form>
         </div>
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-keyboard-o"></i></span>
-          <input type="password" class="form-control" placeholder="Password" name="password" pattern=".{3,}" title="Password must contain 3 or more characters." required>
-        </div>
-        <button class="btn btn-danger btn-lg btn-block" type="submit">Register</button>
-      </div>
-    </form>
-  </div>
 
-
-</body>
-
+    </body>
 </html>
