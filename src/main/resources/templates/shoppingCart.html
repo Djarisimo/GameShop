@@ -36,7 +36,7 @@
 
 
                 <div class="top-nav notification-row">
-                    <a th:href="@{/cart-items}" class="btn btn-info btn-lg"><i class="fa fa-shopping-cart"></i><span th:text="${'Items: ' + shoppingCart.size()}"></span></a>
+                    <a th:href="@{/cart-items}" class="btn btn-info btn-lg"><i class="fa fa-shopping-cart"></i><span th:text="${' ' + 'Items: ' + shoppingCart.size}"></span></a>
                     <!-- notificatoin dropdown start-->
                     <ul class="nav pull-right top-menu">
 
@@ -126,13 +126,15 @@
                         <tbody>
                             <tr th:each="cart:${shoppingCart}">
                                 <td><img th:src="@{${cart.game.pictureUrl}}" height=40 width=40> </a></td>
-                                <td><a th:href="@{/details/{id}(id=${cart.game.id})}" + th:text="${cart.game.name}" ></a></td>
+                                <td style="max-width: 150px;"><a th:href="@{/details/{id}(id=${cart.game.id})}" + th:text="${cart.game.name}" ></a></td>
                                 <td th:text="${cart.game.price + ' ' + '$'}"></td>
-                                <td  th:text="${cart.game.platform.name}"></td> 
+                                <td th:text="${cart.game.platform.name}"></td> 
 
                         <form action="/cart-items/update" method="post">
-                            <td><input type="number" name="quantity" th:value="${cart.quantity}" min="1" required/>
-                                <button class="btn btn-success btn-sm btn-custom" type="submit"><i class="fa fa-check"></i></button></td>
+                            <td class="form-inline" style="max-width: 10px;">
+                                <input class="form-control" type="number" name="quantity" th:value="${cart.quantity}" min="1" style="width: 6em" required/>
+                                <button class="btn btn-success btn-sm btn-custom" type="submit"><i class="fa fa-check"></i></button> 
+                            </td>
                             <input type="hidden" th:value="${cart.id}" name="id"/>
                         </form> 
 
@@ -143,15 +145,13 @@
                     </table>
 
                     <br><hr>
-                    <div class="col-md-2" style="float: right">
-                        <div class="card mb-2">                          
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">                                
-                                    <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                                        <div><strong> <div th:text="${'Total amount: ' + totalPrice + ' ' + '$'}"></div></strong></div>                                       
-                                    </li>
-                                </ul>                                                
-                            </div>
+                    <div class="col-md-2" style="float: right">                   
+                        <div class="card-body">
+                            <ul class="list-group">                                
+                                <li class="list-group-item">
+                                    <strong><div th:text="${'Total amount: ' + totalPrice + ' ' + '$'}"></div></strong>                                   
+                                </li>
+                            </ul>                                                
                         </div>
                     </div>
 
