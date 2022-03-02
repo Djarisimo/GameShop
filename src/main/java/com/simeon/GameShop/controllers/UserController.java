@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "users/addNew")
+    @PostMapping("/users/addNew")
     public RedirectView addNew(User user, RedirectAttributes redir) {
         userService.addUser(user);
         RedirectView redirectView = new RedirectView("/login", true);
