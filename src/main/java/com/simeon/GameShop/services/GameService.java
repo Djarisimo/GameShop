@@ -32,6 +32,7 @@ public class GameService {
         return gameRepository.findByNameOrPriceLike(keyword);
     }
     
+    //details page
     public Game getGameById(int id) {
         return gameRepository.findById(id).get();
     }
