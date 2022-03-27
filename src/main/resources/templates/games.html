@@ -127,7 +127,7 @@
                     <div class="form-center">
                         <form class="form-inline" th:action="@{/search}" method="get"> 
                             <div class="form-group mx-sm-3 mb-2">
-                                <input class="form-control" type="text" name="keyword" placeholder="Find by Title & Price" size="30" autocomplete="off">  
+                                <input class="form-control" type="text" name="keyword" th:value="${keyword}" placeholder="Find by Title & Price" size="30" autocomplete="off">  
                             </div>
                             <button type="submit" class="btn btn-info">Filter</button> 
                             <a class="btn btn-info" th:href="@{/}">Back</a> 
@@ -227,14 +227,9 @@
                                     <a class="btn btn-danger" th:href="@{/games/delete/(id=${game.id})}" onclick="return confirm('Are you sure you want to delete this game?');">Delete</a>
                                     <!------------ Add to cart----------------- -->
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-success" data-toggle="modal"
-                                                data-target="#cartModal" th:attrappend="data-target=${game.id}">Add to
-                                            cart
-                                        </button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#cartModal" th:attrappend="data-target=${game.id}">Add to cart </button>
                                     </div>
-                                    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalLabel" aria-hidden="true"
-                                         th:attrappend="id=${game.id}">
+                                    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" th:attrappend="id=${game.id}">
                                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header border-bottom-0">
@@ -257,8 +252,8 @@
                                                                     <td th:text="${game.name}"></td>
                                                                     <td th:text="${game.price + '$'}"></td>
                                                                     <td th:text="${game.platform.name}"></td>
-                                                            <input type="hidden" name="id" th:value="${game.id}"/>
-                                                            </tr>
+                                                                    <input type="hidden" name="id" th:value="${game.id}"/>
+                                                                </tr>
                                                             </tbody>
                                                         </table> 
                                                         <button type="submit" class="btn btn-primary">Submit</button>

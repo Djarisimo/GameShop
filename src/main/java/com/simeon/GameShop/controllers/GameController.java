@@ -58,7 +58,8 @@ public class GameController {
         
         model.addAttribute("studios", studioService.getAllStudios());
         model.addAttribute("genres", genreService.getAllGenres());
-        model.addAttribute("platforms", platformService.getAllPlatforms());
+        model.addAttribute("platforms", platformService.getAllPlatforms()); 
+        model.addAttribute("keyword", keyword);
         
         List<CartItem> list = cartItemService.getAllCartItems();
         model.addAttribute("shoppingCart", list);
@@ -68,7 +69,7 @@ public class GameController {
     
     @GetMapping("search")
     public String findByNameOrPriceLike(@RequestParam(name = "keyword", required = false) String keyword, Model model) {
-        model.addAttribute("games", gameService.findByNameOrPriceLike(keyword));
+        model.addAttribute("games", gameService.findByNameOrPriceLike(keyword));       
         
         List<CartItem> list = cartItemService.getAllCartItems();
         model.addAttribute("shoppingCart", list);
