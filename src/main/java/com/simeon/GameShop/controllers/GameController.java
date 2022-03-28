@@ -39,7 +39,7 @@ public class GameController {
 
     
     @GetMapping("/")
-    public String getAllGames(Model model, String keyword, @RequestParam("page") Optional<Integer> page,@RequestParam("size") Optional<Integer> size) {
+    public String getAllGames(Model model, @RequestParam("page") Optional<Integer> page,@RequestParam("size") Optional<Integer> size) {
 
         int currentPage = page.orElse(1);
         int pageSize = size.orElse(5);
@@ -59,7 +59,6 @@ public class GameController {
         model.addAttribute("studios", studioService.getAllStudios());
         model.addAttribute("genres", genreService.getAllGenres());
         model.addAttribute("platforms", platformService.getAllPlatforms()); 
-        model.addAttribute("keyword", keyword);
         
         List<CartItem> list = cartItemService.getAllCartItems();
         model.addAttribute("shoppingCart", list);
